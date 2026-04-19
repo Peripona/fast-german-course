@@ -43,3 +43,7 @@ data/
 *.pth
 *.onnx
 models/
+
+# Next.js
+.next/
+tsconfig.tsbuildinfo
