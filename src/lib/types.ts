@@ -110,6 +110,9 @@ export interface UserSettings {
   dailyCardGoal: number;
   dailyLessonGoal: number;
   theme: "light" | "dark" | "system";
+  autoPlayAudio: boolean;
+  audioRate: number;
+  audioVoiceURI: string | null;
 }
 
 export interface AppState {

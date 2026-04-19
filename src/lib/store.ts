@@ -36,6 +36,9 @@ const defaultSettings: UserSettings = {
   dailyCardGoal: 10,
   dailyLessonGoal: 1,
   theme: "system",
+  autoPlayAudio: false,
+  audioRate: 0.9,
+  audioVoiceURI: null,
 };
 
 const initialState: AppState = {
