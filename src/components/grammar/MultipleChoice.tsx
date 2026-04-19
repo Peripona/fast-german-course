@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { MultipleChoiceExercise } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AudioButton } from "@/components/ui/AudioButton";
 
 export function MultipleChoice({
   exercise,
@@ -25,25 +26,27 @@ export function MultipleChoice({
       <p className="font-medium">{exercise.question}</p>
       <div className="flex flex-col gap-2">
         {exercise.options.map((opt, idx) => (
-          <Button
-            key={opt}
-            type="button"
-            variant="outline"
-            className={cn(
-              "justify-start text-left",
-              picked !== null &&
-                idx === exercise.correctIndex &&
-                "border-green-600 bg-green-500/10",
-              picked !== null &&
-                picked === idx &&
-                idx !== exercise.correctIndex &&
-                "border-destructive bg-destructive/10",
-            )}
-            onClick={() => select(idx)}
-            disabled={picked !== null}
-          >
-            {opt}
-          </Button>
+          <div key={opt} className="flex items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              className={cn(
+                "flex-1 justify-start text-left",
+                picked !== null &&
+                  idx === exercise.correctIndex &&
+                  "border-green-600 bg-green-500/10",
+                picked !== null &&
+                  picked === idx &&
+                  idx !== exercise.correctIndex &&
+                  "border-destructive bg-destructive/10",
+              )}
+              onClick={() => select(idx)}
+              disabled={picked !== null}
+            >
+              {opt}
+            </Button>
+            <AudioButton text={opt} />
+          </div>
         ))}
       </div>
       {picked !== null && exercise.explanation && (

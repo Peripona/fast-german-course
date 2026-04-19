@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { WordOrderExercise } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AudioButton } from "@/components/ui/AudioButton";
 
 export function WordOrder({
   exercise,
@@ -41,6 +42,8 @@ export function WordOrder({
     submitted &&
     built.length === exercise.correctOrder.length &&
     built.every((w, i) => w === exercise.correctOrder[i]);
+
+  const correctSentence = exercise.correctOrder.join(" ");
 
   return (
     <div className="space-y-3">
@@ -90,7 +93,14 @@ export function WordOrder({
             correct ? "bg-green-500/10 text-green-800 dark:text-green-200" : "bg-destructive/10",
           )}
         >
-          {correct ? "Correct!" : `Expected: ${exercise.correctOrder.join(" ")}`}
+          {correct ? (
+            "Correct!"
+          ) : (
+            <span className="flex items-center gap-2">
+              Expected: {correctSentence}
+              <AudioButton text={correctSentence} />
+            </span>
+          )}
           {exercise.explanation && (
             <p className="mt-2 text-muted-foreground">{exercise.explanation}</p>
           )}

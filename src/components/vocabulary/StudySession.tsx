@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Rating, VocabCard } from "@/lib/types";
 import { useAppStore } from "@/lib/store";
+import { useAudio } from "@/lib/useAudio";
 import { FlashCard } from "./FlashCard";
 import { RatingButtons } from "./RatingButtons";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,8 @@ export function StudySession({
 }) {
   const router = useRouter();
   const recordCardReview = useAppStore((s) => s.recordCardReview);
+  const autoPlayAudio = useAppStore((s) => s.settings.autoPlayAudio);
+  const { speak, stop } = useAudio();
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
 
@@ -45,6 +48,19 @@ export function StudySession({
   useEffect(() => {
     setFlipped(false);
   }, [index]);
+
+  // Auto-play German word when a new card appears
+  useEffect(() => {
+    if (autoPlayAudio && card) speak(card.german);
+    return () => stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index]);
+
+  // Auto-play example sentence when card flips to back
+  useEffect(() => {
+    if (autoPlayAudio && flipped && card) speak(card.example);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flipped]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {

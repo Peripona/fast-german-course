@@ -31,7 +31,7 @@ Object.defineProperty(globalThis, "SpeechSynthesisUtterance", {
 
 const mockCancel = vi.fn();
 const mockSpeak = vi.fn();
-const mockGetVoices = vi.fn(() => []);
+const mockGetVoices = vi.fn((): SpeechSynthesisVoice[] => []);
 
 beforeEach(() => {
   mockAudioVoiceURI = null;

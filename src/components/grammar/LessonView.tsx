@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useAppStore } from "@/lib/store";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { AudioButton } from "@/components/ui/AudioButton";
 
 function ExerciseBlock({
   ex,
@@ -66,8 +67,9 @@ export function LessonView({ lesson }: { lesson: GrammarLesson }) {
           {sec.examples && (
             <ul className="space-y-2 border-l-2 border-destructive/50 pl-4">
               {sec.examples.map((ex) => (
-                <li key={ex.de}>
+                <li key={ex.de} className="flex items-center gap-2">
                   <span className="font-medium text-foreground">{ex.de}</span>
+                  <AudioButton text={ex.de} />
                   <span className="text-muted-foreground"> — {ex.en}</span>
                 </li>
               ))}

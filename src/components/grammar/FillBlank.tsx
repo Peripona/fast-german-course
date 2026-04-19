@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { FillBlankExercise } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AudioButton } from "@/components/ui/AudioButton";
 
 function normalize(s: string): string {
   return s.trim().toLowerCase();
@@ -52,8 +53,17 @@ export function FillBlank({
             correct ? "bg-green-500/10 text-green-800 dark:text-green-200" : "bg-destructive/10",
           )}
         >
-          {correct ? "Correct!" : `Expected: ${exercise.answer}`}
-          {exercise.explanation && <p className="mt-2 text-muted-foreground">{exercise.explanation}</p>}
+          {correct ? (
+            "Correct!"
+          ) : (
+            <span className="flex items-center gap-2">
+              Expected: {exercise.answer}
+              <AudioButton text={exercise.answer} />
+            </span>
+          )}
+          {exercise.explanation && (
+            <p className="mt-2 text-muted-foreground">{exercise.explanation}</p>
+          )}
         </div>
       )}
     </div>
