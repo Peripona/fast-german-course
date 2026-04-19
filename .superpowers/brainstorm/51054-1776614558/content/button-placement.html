@@ -1,0 +1,76 @@
+<h2>Where should the audio buttons live?</h2>
+<p class="subtitle">The front card has the German word · the back has the example sentence</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px;">
+      <!-- Front -->
+      <div style="background: var(--card-bg, #1e1e2e); border: 2px solid var(--border, #444); border-radius: 12px; padding: 20px; margin-bottom: 8px; text-align: center; position: relative;">
+        <div style="font-size: 1.5rem; font-weight: bold; color: #7aa2f7;">Hallo</div>
+        <div style="font-size: 0.65rem; color: #888; margin-top: 4px;">greetings</div>
+        <button style="position: absolute; top: 8px; right: 10px; background: none; border: 1px solid #555; border-radius: 6px; color: #aaa; padding: 3px 7px; font-size: 0.7rem; cursor: pointer;">🔊 word</button>
+      </div>
+      <!-- Back -->
+      <div style="background: var(--muted, #2a2a3e); border: 2px solid var(--border, #444); border-radius: 12px; padding: 20px; text-align: center; position: relative;">
+        <div style="font-size: 1.1rem; font-weight: 500; color: #cdd6f4;">Hello</div>
+        <div style="font-size: 0.75rem; color: #aaa; font-style: italic; margin-top: 6px;">Hallo, wie geht es dir?</div>
+        <div style="font-size: 0.65rem; color: #666; margin-top: 3px;">Hello, how are you?</div>
+        <button style="position: absolute; top: 8px; right: 10px; background: none; border: 1px solid #555; border-radius: 6px; color: #aaa; padding: 3px 7px; font-size: 0.7rem; cursor: pointer;">🔊 sentence</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Inside the card face</h3>
+      <p>Small speaker button in the corner of each face. Tapping the button plays audio without flipping the card.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px;">
+      <!-- Card -->
+      <div style="background: var(--card-bg, #1e1e2e); border: 2px solid var(--border, #444); border-radius: 12px; padding: 20px; margin-bottom: 8px; text-align: center;">
+        <div style="font-size: 1.5rem; font-weight: bold; color: #7aa2f7;">Hallo</div>
+        <div style="font-size: 0.65rem; color: #888; margin-top: 4px;">greetings</div>
+        <div style="font-size: 0.6rem; color: #666; margin-top: 10px;">Tap or Space to flip</div>
+      </div>
+      <!-- Controls below -->
+      <div style="display: flex; gap: 8px; justify-content: center; margin-top: 8px;">
+        <button style="background: none; border: 1px solid #555; border-radius: 8px; color: #aaa; padding: 6px 14px; font-size: 0.75rem; cursor: pointer;">🔊 Hear word</button>
+        <button style="background: none; border: 1px solid #555; border-radius: 8px; color: #aaa; padding: 6px 14px; font-size: 0.75rem; cursor: pointer;">🔊 Hear sentence</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Below the card, always visible</h3>
+      <p>Two clearly-labelled buttons sit beneath the card at all times. Always accessible regardless of which face is showing.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px;">
+      <!-- Front -->
+      <div style="background: var(--card-bg, #1e1e2e); border: 2px solid var(--border, #444); border-radius: 12px; padding: 20px; margin-bottom: 8px; text-align: center; position: relative;">
+        <div style="font-size: 1.5rem; font-weight: bold; color: #7aa2f7;">Hallo</div>
+        <div style="font-size: 0.65rem; color: #888; margin-top: 4px;">greetings</div>
+        <div style="font-size: 0.6rem; color: #666; margin-top: 10px;">Tap or Space to flip</div>
+        <!-- Icon only, bottom center -->
+        <div style="margin-top: 10px;">
+          <button style="background: none; border: none; color: #7aa2f7; font-size: 1.1rem; cursor: pointer;" title="Hear word">🔊</button>
+        </div>
+      </div>
+      <!-- Back -->
+      <div style="background: var(--muted, #2a2a3e); border: 2px solid var(--border, #444); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="font-size: 1.1rem; font-weight: 500; color: #cdd6f4;">Hello</div>
+        <div style="font-size: 0.75rem; color: #aaa; font-style: italic; margin-top: 6px;">Hallo, wie geht es dir?</div>
+        <div style="font-size: 0.65rem; color: #666; margin-top: 3px;">Hello, how are you?</div>
+        <div style="margin-top: 10px;">
+          <button style="background: none; border: none; color: #7aa2f7; font-size: 1.1rem; cursor: pointer;" title="Hear sentence">🔊</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Icon inside, bottom-center of each face</h3>
+      <p>A single speaker icon embedded at the bottom of each card face. Minimal footprint, context-aware (word on front, sentence on back).</p>
+    </div>
+  </div>
+
+</div>

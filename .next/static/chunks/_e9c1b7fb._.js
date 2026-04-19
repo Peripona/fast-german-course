@@ -657,6 +657,7 @@ __turbopack_context__.s([
     ()=>GoalSettings
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/store.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/label.tsx [app-client] (ecmascript)");
@@ -666,6 +667,21 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
+const SPEED_PRESETS = [
+    {
+        label: "Slow",
+        rate: 0.7
+    },
+    {
+        label: "Normal",
+        rate: 0.9
+    },
+    {
+        label: "Fast",
+        rate: 1.1
+    }
+];
 function GoalSettings() {
     _s();
     const settings = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppStore"])({
@@ -674,125 +690,315 @@ function GoalSettings() {
     const setSettings = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppStore"])({
         "GoalSettings.useAppStore[setSettings]": (s)=>s.setSettings
     }["GoalSettings.useAppStore[setSettings]"]);
+    const [voices, setVoices] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "GoalSettings.useEffect": ()=>{
+            function loadVoices() {
+                const all = window.speechSynthesis.getVoices();
+                setVoices(all.filter({
+                    "GoalSettings.useEffect.loadVoices": (v)=>v.lang.startsWith("de")
+                }["GoalSettings.useEffect.loadVoices"]));
+            }
+            loadVoices();
+            window.speechSynthesis.addEventListener("voiceschanged", loadVoices);
+            return ({
+                "GoalSettings.useEffect": ()=>{
+                    window.speechSynthesis.removeEventListener("voiceschanged", loadVoices);
+                }
+            })["GoalSettings.useEffect"];
+        }
+    }["GoalSettings.useEffect"], []);
+    var _settings_audioVoiceURI;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "grid gap-4 sm:grid-cols-2",
+        className: "space-y-8",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-2",
+                className: "grid gap-4 sm:grid-cols-2",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                        htmlFor: "card-goal",
-                        children: "Daily card review goal"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                        lineNumber: 14,
-                        columnNumber: 9
-                    }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex gap-2",
+                        className: "space-y-2",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                id: "card-goal",
-                                type: "number",
-                                min: 1,
-                                max: 200,
-                                className: "w-24 rounded-md border border-input bg-background px-2 py-1 text-sm",
-                                value: settings.dailyCardGoal,
-                                onChange: (e)=>setSettings({
-                                        dailyCardGoal: Number(e.target.value) || 1
-                                    })
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                htmlFor: "card-goal",
+                                children: "Daily card review goal"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                                lineNumber: 16,
+                                lineNumber: 36,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                type: "button",
-                                size: "sm",
-                                variant: "outline",
-                                onClick: ()=>setSettings({
-                                        dailyCardGoal: 10
-                                    }),
-                                children: "Reset"
-                            }, void 0, false, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        id: "card-goal",
+                                        type: "number",
+                                        min: 1,
+                                        max: 200,
+                                        className: "w-24 rounded-md border border-input bg-background px-2 py-1 text-sm",
+                                        value: settings.dailyCardGoal,
+                                        onChange: (e)=>setSettings({
+                                                dailyCardGoal: Number(e.target.value) || 1
+                                            })
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                        lineNumber: 38,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                        type: "button",
+                                        size: "sm",
+                                        variant: "outline",
+                                        onClick: ()=>setSettings({
+                                                dailyCardGoal: 10
+                                            }),
+                                        children: "Reset"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                        lineNumber: 49,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                                lineNumber: 27,
+                                lineNumber: 37,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                        lineNumber: 15,
+                        lineNumber: 35,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                htmlFor: "lesson-goal",
+                                children: "Daily new grammar lessons goal"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                lineNumber: 60,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        id: "lesson-goal",
+                                        type: "number",
+                                        min: 0,
+                                        max: 20,
+                                        className: "w-24 rounded-md border border-input bg-background px-2 py-1 text-sm",
+                                        value: settings.dailyLessonGoal,
+                                        onChange: (e)=>setSettings({
+                                                dailyLessonGoal: Number(e.target.value) || 0
+                                            })
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                        lineNumber: 62,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                        type: "button",
+                                        size: "sm",
+                                        variant: "outline",
+                                        onClick: ()=>setSettings({
+                                                dailyLessonGoal: 1
+                                            }),
+                                        children: "Reset"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                        lineNumber: 73,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                lineNumber: 61,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                        lineNumber: 59,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                lineNumber: 13,
+                lineNumber: 34,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-2",
+                className: "space-y-4",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                        htmlFor: "lesson-goal",
-                        children: "Daily new grammar lessons goal"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: "text-sm font-semibold uppercase tracking-wide text-muted-foreground",
+                        children: "Audio"
                     }, void 0, false, {
                         fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                        lineNumber: 38,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex gap-2",
+                        className: "flex items-start gap-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                id: "lesson-goal",
-                                type: "number",
-                                min: 0,
-                                max: 20,
-                                className: "w-24 rounded-md border border-input bg-background px-2 py-1 text-sm",
-                                value: settings.dailyLessonGoal,
+                                id: "auto-play",
+                                type: "checkbox",
+                                className: "mt-0.5 h-4 w-4 cursor-pointer rounded border-input accent-primary",
+                                checked: settings.autoPlayAudio,
                                 onChange: (e)=>setSettings({
-                                        dailyLessonGoal: Number(e.target.value) || 0
+                                        autoPlayAudio: e.target.checked
                                     })
                             }, void 0, false, {
                                 fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                                lineNumber: 40,
+                                lineNumber: 91,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                type: "button",
-                                size: "sm",
-                                variant: "outline",
-                                onClick: ()=>setSettings({
-                                        dailyLessonGoal: 1
-                                    }),
-                                children: "Reset"
-                            }, void 0, false, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                        htmlFor: "auto-play",
+                                        className: "cursor-pointer font-medium",
+                                        children: "Auto-play German word and sentence"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                        lineNumber: 99,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-xs text-muted-foreground",
+                                        children: "Automatically speak the word when a card loads and the example sentence when you flip it."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                        lineNumber: 102,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                                lineNumber: 51,
+                                lineNumber: 98,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                        lineNumber: 39,
+                        lineNumber: 90,
                         columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                children: "Playback speed"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                lineNumber: 110,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex gap-2",
+                                children: SPEED_PRESETS.map((param)=>{
+                                    let { label, rate } = param;
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                        type: "button",
+                                        size: "sm",
+                                        variant: settings.audioRate === rate ? "default" : "outline",
+                                        onClick: ()=>setSettings({
+                                                audioRate: rate
+                                            }),
+                                        children: label
+                                    }, label, false, {
+                                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                        lineNumber: 113,
+                                        columnNumber: 15
+                                    }, this);
+                                })
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                lineNumber: 111,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                        lineNumber: 109,
+                        columnNumber: 9
+                    }, this),
+                    voices.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                htmlFor: "voice-select",
+                                children: "Voice"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                lineNumber: 129,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                id: "voice-select",
+                                className: "rounded-md border border-input bg-background px-2 py-1 text-sm",
+                                value: (_settings_audioVoiceURI = settings.audioVoiceURI) !== null && _settings_audioVoiceURI !== void 0 ? _settings_audioVoiceURI : "",
+                                onChange: (e)=>setSettings({
+                                        audioVoiceURI: e.target.value || null
+                                    }),
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                        value: "",
+                                        children: "OS default"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                        lineNumber: 138,
+                                        columnNumber: 15
+                                    }, this),
+                                    voices.map((v)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                            value: v.voiceURI,
+                                            children: [
+                                                v.name,
+                                                " (",
+                                                v.lang,
+                                                ")"
+                                            ]
+                                        }, v.voiceURI, true, {
+                                            fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                            lineNumber: 140,
+                                            columnNumber: 17
+                                        }, this))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                                lineNumber: 130,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                        lineNumber: 128,
+                        columnNumber: 11
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-xs text-muted-foreground",
+                        children: "Using OS default German voice."
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/settings/GoalSettings.tsx",
+                        lineNumber: 147,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/settings/GoalSettings.tsx",
-                lineNumber: 37,
+                lineNumber: 86,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/settings/GoalSettings.tsx",
-        lineNumber: 12,
+        lineNumber: 32,
         columnNumber: 5
     }, this);
 }
-_s(GoalSettings, "QDFfkWyDk3n2gnH64jB2Mzzn9w0=", false, function() {
+_s(GoalSettings, "5tNkQYC+VkNyrXHRXw3xTDejoZI=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppStore"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppStore"]
