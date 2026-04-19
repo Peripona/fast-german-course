@@ -1,0 +1,33 @@
+{
+  "id": "a1-greetings",
+  "title": "Greetings & basics",
+  "level": "A1",
+  "topic": "greetings",
+  "cards": [
+    {"id": "a1-gr-01", "german": "Hallo", "english": "Hello", "gender": null, "example": "Hallo, wie geht es dir?", "exampleEn": "Hello, how are you?", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-02", "german": "Guten Tag", "english": "Good day", "gender": null, "example": "Guten Tag, kann ich helfen?", "exampleEn": "Good day, can I help?", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-03", "german": "Guten Morgen", "english": "Good morning", "gender": null, "example": "Guten Morgen, Frau Müller.", "exampleEn": "Good morning, Ms. Müller.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-04", "german": "Guten Abend", "english": "Good evening", "gender": null, "example": "Guten Abend, herzlich willkommen.", "exampleEn": "Good evening, welcome.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-05", "german": "Gute Nacht", "english": "Good night", "gender": null, "example": "Gute Nacht und schlaf gut.", "exampleEn": "Good night and sleep well.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-06", "german": "Tschüss", "english": "Bye", "gender": null, "example": "Tschüss, bis morgen!", "exampleEn": "Bye, see you tomorrow!", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-07", "german": "Auf Wiedersehen", "english": "Goodbye", "gender": null, "example": "Auf Wiedersehen und vielen Dank.", "exampleEn": "Goodbye and thank you very much.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-08", "german": "Bitte", "english": "Please / You're welcome", "gender": null, "example": "Bitte sehr.", "exampleEn": "You're welcome.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-09", "german": "Danke", "english": "Thanks", "gender": null, "example": "Danke für die Hilfe.", "exampleEn": "Thanks for the help.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-10", "german": "Entschuldigung", "english": "Excuse me / Sorry", "gender": null, "example": "Entschuldigung, wo ist der Bahnhof?", "exampleEn": "Excuse me, where is the station?", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-11", "german": "Ja", "english": "Yes", "gender": null, "example": "Ja, das stimmt.", "exampleEn": "Yes, that's right.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-12", "german": "Nein", "english": "No", "gender": null, "example": "Nein, danke.", "exampleEn": "No, thanks.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-13", "german": "Wie geht's?", "english": "How are you?", "gender": null, "example": "Hey, wie geht's?", "exampleEn": "Hey, how are you?", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-14", "german": "Mir geht's gut", "english": "I'm fine", "gender": null, "example": "Mir geht's gut, danke.", "exampleEn": "I'm fine, thanks.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-15", "german": "Freut mich", "english": "Nice to meet you", "gender": null, "example": "Freut mich, ich bin Anna.", "exampleEn": "Nice to meet you, I'm Anna.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-16", "german": "Bis bald", "english": "See you soon", "gender": null, "example": "Bis bald im Café!", "exampleEn": "See you soon at the café!", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-17", "german": "Bis später", "english": "See you later", "gender": null, "example": "Bis später im Büro.", "exampleEn": "See you later at the office.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-18", "german": "Herzlich willkommen", "english": "Welcome", "gender": null, "example": "Herzlich willkommen in Berlin.", "exampleEn": "Welcome to Berlin.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-19", "german": "Gern geschehen", "english": "You're welcome", "gender": null, "example": "Gern geschehen!", "exampleEn": "You're welcome!", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-20", "german": "Wie heißt du?", "english": "What's your name? (informal)", "gender": null, "example": "Wie heißt du?", "exampleEn": "What's your name?", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-21", "german": "Ich heiße", "english": "My name is", "gender": null, "example": "Ich heiße Tom.", "exampleEn": "My name is Tom.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-22", "german": "Schönen Tag noch", "english": "Have a nice day", "gender": null, "example": "Schönen Tag noch!", "exampleEn": "Have a nice day!", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-23", "german": "Viel Glück", "english": "Good luck", "gender": null, "example": "Viel Glück bei der Prüfung.", "exampleEn": "Good luck on the exam.", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-24", "german": "Prost", "english": "Cheers", "gender": null, "example": "Prost, auf ein gutes Jahr!", "exampleEn": "Cheers, to a good year!", "level": "A1", "topic": "greetings"},
+    {"id": "a1-gr-25", "german": "Mach's gut", "english": "Take care", "gender": null, "example": "Mach's gut, bis dann!", "exampleEn": "Take care, see you!", "level": "A1", "topic": "greetings"}
+  ]
+}

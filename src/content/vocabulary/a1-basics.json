@@ -1,0 +1,33 @@
+{
+  "id": "a1-basics",
+  "title": "Core words",
+  "level": "A1",
+  "topic": "basics",
+  "cards": [
+    {"id": "a1-ba-01", "german": "und", "english": "and", "gender": null, "example": "Brot und Käse.", "exampleEn": "Bread and cheese.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-02", "german": "oder", "english": "or", "gender": null, "example": "Tee oder Kaffee?", "exampleEn": "Tea or coffee?", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-03", "german": "aber", "english": "but", "gender": null, "example": "Klein, aber fein.", "exampleEn": "Small but nice.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-04", "german": "auch", "english": "also / too", "gender": null, "example": "Ich auch.", "exampleEn": "Me too.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-05", "german": "nicht", "english": "not", "gender": null, "example": "Das ist nicht richtig.", "exampleEn": "That is not correct.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-06", "german": "kein", "english": "no / not a", "gender": null, "example": "Ich habe keine Zeit.", "exampleEn": "I have no time.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-07", "german": "sehr", "english": "very", "gender": null, "example": "Sehr gut!", "exampleEn": "Very good!", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-08", "german": "gut", "english": "good", "gender": null, "example": "Ein guter Tag.", "exampleEn": "A good day.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-09", "german": "schlecht", "english": "bad", "gender": null, "example": "Schlechtes Wetter.", "exampleEn": "Bad weather.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-10", "german": "groß", "english": "big", "gender": null, "example": "Ein großes Haus.", "exampleEn": "A big house.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-11", "german": "klein", "english": "small", "gender": null, "example": "Ein kleines Kind.", "exampleEn": "A small child.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-12", "german": "neu", "english": "new", "gender": null, "example": "Ein neues Auto.", "exampleEn": "A new car.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-13", "german": "alt", "english": "old", "gender": null, "example": "Ein altes Buch.", "exampleEn": "An old book.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-14", "german": "hier", "english": "here", "gender": null, "example": "Komm hierher.", "exampleEn": "Come here.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-15", "german": "jetzt", "english": "now", "gender": null, "example": "Was machen wir jetzt?", "exampleEn": "What do we do now?", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-16", "german": "heute", "english": "today", "gender": null, "example": "Heute regnet es.", "exampleEn": "Today it rains.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-17", "german": "morgen", "english": "tomorrow / morning", "gender": null, "example": "Bis morgen!", "exampleEn": "See you tomorrow!", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-18", "german": "gestern", "english": "yesterday", "gender": null, "example": "Gestern war Sonntag.", "exampleEn": "Yesterday was Sunday.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-19", "german": "wichtig", "english": "important", "gender": null, "example": "Das ist wichtig.", "exampleEn": "That is important.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-20", "german": "leicht", "english": "easy / light", "gender": null, "example": "Die Übung ist leicht.", "exampleEn": "The exercise is easy.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-21", "german": "schwer", "english": "difficult / heavy", "gender": null, "example": "Die Prüfung war schwer.", "exampleEn": "The exam was difficult.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-22", "german": "vielleicht", "english": "maybe", "gender": null, "example": "Vielleicht später.", "exampleEn": "Maybe later.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-23", "german": "wirklich", "english": "really", "gender": null, "example": "Wirklich interessant.", "exampleEn": "Really interesting.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-24", "german": "noch", "english": "still / yet", "gender": null, "example": "Ich bin noch da.", "exampleEn": "I'm still here.", "level": "A1", "topic": "basics"},
+    {"id": "a1-ba-25", "german": "schon", "english": "already", "gender": null, "example": "Bist du schon fertig?", "exampleEn": "Are you already done?", "level": "A1", "topic": "basics"}
+  ]
+}

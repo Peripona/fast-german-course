@@ -1,0 +1,64 @@
+{
+  "id": "a1-word-order",
+  "title": "Basic word order (V2)",
+  "level": "A1",
+  "summary": "In main clauses, the verb is usually in second position (V2 rule).",
+  "sections": [
+    {
+      "heading": "Statement",
+      "body": [
+        "Subject often first: Ich gehe heute ins Kino.",
+        "Time can be first: Heute gehe ich ins Kino. (verb stays second)"
+      ],
+      "examples": [
+        { "de": "Morgen fahren wir nach Berlin.", "en": "Tomorrow we travel to Berlin." },
+        { "de": "In Berlin gibt es viele Museen.", "en": "In Berlin there are many museums." }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "a1-wo-1",
+      "type": "wordOrder",
+      "words": ["lese", "Ich", "ein Buch"],
+      "correctOrder": ["Ich", "lese", "ein Buch"],
+      "explanation": "S-V-O"
+    },
+    {
+      "id": "a1-wo-2",
+      "type": "wordOrder",
+      "words": ["fahre", "Heute", "ich", "mit dem Bus"],
+      "correctOrder": ["Heute", "fahre", "ich", "mit dem Bus"],
+      "explanation": "Time first, then V2."
+    },
+    {
+      "id": "a1-wo-3",
+      "type": "multipleChoice",
+      "question": "Which sentence follows V2 correctly?",
+      "options": ["Ich gehe oft spazieren.", "Ich oft gehe spazieren.", "Gehe ich oft spazieren.", "Ich spazieren gehe oft."],
+      "correctIndex": 0,
+      "explanation": "Verb in second position."
+    },
+    {
+      "id": "a1-wo-4",
+      "type": "fillBlank",
+      "prompt": "Jetzt ___ ich Kaffee. (trinken)",
+      "answer": "trinke",
+      "explanation": "Jetzt first, then verb."
+    },
+    {
+      "id": "a1-wo-5",
+      "type": "wordOrder",
+      "words": ["ist", "Das", "interessant", "sehr"],
+      "correctOrder": ["Das", "ist", "sehr", "interessant"],
+      "explanation": "Subject-verb-adjective."
+    },
+    {
+      "id": "a1-wo-6",
+      "type": "fillBlank",
+      "prompt": "___ du Deutsch? (sprechen)",
+      "answer": "Sprichst",
+      "explanation": "du-questions: verb first in questions."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "a1-family",
+  "title": "Family & people",
+  "level": "A1",
+  "topic": "family",
+  "cards": [
+    {"id": "a1-fa-01", "german": "die Familie", "english": "the family", "gender": "feminine", "example": "Meine Familie ist groß.", "exampleEn": "My family is big.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-02", "german": "der Vater", "english": "the father", "gender": "masculine", "example": "Mein Vater arbeitet.", "exampleEn": "My father works.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-03", "german": "die Mutter", "english": "the mother", "gender": "feminine", "example": "Die Mutter kocht.", "exampleEn": "The mother cooks.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-04", "german": "der Sohn", "english": "the son", "gender": "masculine", "example": "Unser Sohn ist fünf.", "exampleEn": "Our son is five.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-05", "german": "die Tochter", "english": "the daughter", "gender": "feminine", "example": "Die Tochter singt.", "exampleEn": "The daughter sings.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-06", "german": "der Bruder", "english": "the brother", "gender": "masculine", "example": "Mein Bruder studiert.", "exampleEn": "My brother studies.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-07", "german": "die Schwester", "english": "the sister", "gender": "feminine", "example": "Die Schwester liest.", "exampleEn": "The sister reads.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-08", "german": "der Großvater", "english": "the grandfather", "gender": "masculine", "example": "Der Großvater erzählt.", "exampleEn": "The grandfather tells stories.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-09", "german": "die Großmutter", "english": "the grandmother", "gender": "feminine", "example": "Die Großmutter backt Kuchen.", "exampleEn": "The grandmother bakes cake.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-10", "german": "der Onkel", "english": "the uncle", "gender": "masculine", "example": "Mein Onkel wohnt in Köln.", "exampleEn": "My uncle lives in Cologne.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-11", "german": "die Tante", "english": "the aunt", "gender": "feminine", "example": "Die Tante besucht uns.", "exampleEn": "The aunt visits us.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-12", "german": "der Mann", "english": "the husband / man", "gender": "masculine", "example": "Ihr Mann ist Arzt.", "exampleEn": "Her husband is a doctor.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-13", "german": "die Frau", "english": "the wife / woman", "gender": "feminine", "example": "Die Frau arbeitet Teilzeit.", "exampleEn": "The woman works part-time.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-14", "german": "das Kind", "english": "the child", "gender": "neuter", "example": "Das Kind spielt.", "exampleEn": "The child plays.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-15", "german": "Freund", "english": "friend (male)", "gender": "masculine", "example": "Ein guter Freund.", "exampleEn": "A good friend.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-16", "german": "Freundin", "english": "friend (female)", "gender": "feminine", "example": "Meine beste Freundin.", "exampleEn": "My best friend.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-17", "german": "verheiratet", "english": "married", "gender": null, "example": "Sie sind verheiratet.", "exampleEn": "They are married.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-18", "german": "ledig", "english": "single", "gender": null, "example": "Er ist noch ledig.", "exampleEn": "He is still single.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-19", "german": "älter", "english": "older", "gender": null, "example": "Mein älterer Bruder.", "exampleEn": "My older brother.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-20", "german": "jünger", "english": "younger", "gender": null, "example": "Die jüngere Schwester.", "exampleEn": "The younger sister.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-21", "german": "der Junge", "english": "the boy", "gender": "masculine", "example": "Der Junge lacht.", "exampleEn": "The boy laughs.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-22", "german": "das Mädchen", "english": "the girl", "gender": "neuter", "example": "Das Mädchen tanzt.", "exampleEn": "The girl dances.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-23", "german": "die Eltern", "english": "the parents", "gender": "plural", "example": "Meine Eltern wohnen hier.", "exampleEn": "My parents live here.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-24", "german": "geschieden", "english": "divorced", "gender": null, "example": "Sie ist geschieden.", "exampleEn": "She is divorced.", "level": "A1", "topic": "family"},
+    {"id": "a1-fa-25", "german": "der Partner", "english": "the partner", "gender": "masculine", "example": "Mein Partner kocht.", "exampleEn": "My partner cooks.", "level": "A1", "topic": "family"}
+  ]
+}

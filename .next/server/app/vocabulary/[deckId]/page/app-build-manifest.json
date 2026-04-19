@@ -1,0 +1,17 @@
+{
+  "pages": {
+    "/vocabulary/[deckId]/page": [
+      "static/chunks/ff1a16fafef87110.js",
+      "static/chunks/cd69f6f390ea8172.js",
+      "static/chunks/592cfc0a74ad092b.css",
+      "static/chunks/6922e149c7e99ecc.js",
+      "static/chunks/c9933b6128f3e31f.js",
+      "static/chunks/ebb64358cbb792e0.js",
+      "static/chunks/c85a7d07e7b82c9a.js",
+      "static/chunks/b81d2c4354a51927.js",
+      "static/chunks/b108ee2a29de2309.js",
+      "static/chunks/8082ab48faca5ea1.js",
+      "static/chunks/turbopack-505c1c2f7dee4c1f.js"
+    ]
+  }
+}

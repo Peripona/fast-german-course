@@ -1,0 +1,900 @@
+module.exports = [
+"[externals]/next/dist/compiled/next-server/app-page-turbo.runtime.dev.js [external] (next/dist/compiled/next-server/app-page-turbo.runtime.dev.js, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("next/dist/compiled/next-server/app-page-turbo.runtime.dev.js", () => require("next/dist/compiled/next-server/app-page-turbo.runtime.dev.js"));
+
+module.exports = mod;
+}),
+"[project]/src/components/providers/theme-provider.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "ThemeProvider",
+    ()=>ThemeProvider
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-themes/dist/index.mjs [app-ssr] (ecmascript)");
+"use client";
+;
+;
+function ThemeProvider({ children, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ThemeProvider"], {
+        ...props,
+        children: children
+    }, void 0, false, {
+        fileName: "[project]/src/components/providers/theme-provider.tsx",
+        lineNumber: 10,
+        columnNumber: 10
+    }, this);
+}
+}),
+"[project]/src/lib/srs.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "calculateNextReview",
+    ()=>calculateNextReview,
+    "createInitialSRSState",
+    ()=>createInitialSRSState,
+    "isDue",
+    ()=>isDue
+]);
+const MIN_EASE = 1.3;
+const DEFAULT_EASE = 2.5;
+function createInitialSRSState() {
+    const now = new Date();
+    return {
+        easeFactor: DEFAULT_EASE,
+        interval: 0,
+        repetitions: 0,
+        nextReview: now.toISOString()
+    };
+}
+function addDays(date, days) {
+    const d = new Date(date);
+    d.setDate(d.getDate() + days);
+    return d;
+}
+function calculateNextReview(prev, rating, now = new Date()) {
+    const state = prev ?? createInitialSRSState();
+    let { easeFactor, interval, repetitions } = state;
+    const qualityMap = {
+        again: 0,
+        hard: 2,
+        good: 4,
+        easy: 5
+    };
+    const q = qualityMap[rating];
+    if (q < 3) {
+        repetitions = 0;
+        if (rating === "again") {
+            interval = 0;
+        } else {
+            interval = Math.max(1, Math.round(interval * 0.5)) || 1;
+        }
+    } else {
+        if (repetitions === 0) {
+            interval = 1;
+        } else if (repetitions === 1) {
+            interval = 6;
+        } else {
+            interval = Math.round(interval * easeFactor);
+        }
+        repetitions += 1;
+    }
+    easeFactor = easeFactor + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
+    if (easeFactor < MIN_EASE) {
+        easeFactor = MIN_EASE;
+    }
+    const next = rating === "again" ? addDays(now, 0) : addDays(now, Math.max(1, interval));
+    return {
+        easeFactor,
+        interval,
+        repetitions,
+        nextReview: next.toISOString(),
+        lastReviewed: now.toISOString()
+    };
+}
+function isDue(state, now = new Date()) {
+    if (!state) return true;
+    return new Date(state.nextReview) <= now;
+}
+}),
+"[project]/src/lib/store.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "getDueCardIds",
+    ()=>getDueCardIds,
+    "useAppStore",
+    ()=>useAppStore
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zustand$2f$esm$2f$react$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/zustand/esm/react.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zustand$2f$esm$2f$middleware$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/zustand/esm/middleware.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$srs$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/srs.ts [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+function todayISO() {
+    return new Date().toISOString().slice(0, 10);
+}
+function bumpStreak(lastActive, streak) {
+    const t = todayISO();
+    if (lastActive === t) return {
+        lastActive,
+        streak
+    };
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const y = yesterday.toISOString().slice(0, 10);
+    if (lastActive === y) {
+        return {
+            lastActive: t,
+            streak: streak + 1
+        };
+    }
+    return {
+        lastActive: t,
+        streak: 1
+    };
+}
+const defaultSettings = {
+    dailyCardGoal: 10,
+    dailyLessonGoal: 1,
+    theme: "system"
+};
+const initialState = {
+    vocabProgress: {},
+    grammarProgress: {},
+    dailyStats: [],
+    settings: defaultSettings,
+    lastActiveDate: todayISO(),
+    streak: 0
+};
+const useAppStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zustand$2f$esm$2f$react$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["create"])()((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zustand$2f$esm$2f$middleware$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["persist"])((set, get)=>({
+        ...initialState,
+        recordCardReview: (cardId, rating)=>{
+            const { vocabProgress, dailyStats, lastActiveDate, streak } = get();
+            const prev = vocabProgress[cardId];
+            const next = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$srs$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["calculateNextReview"])(prev ?? (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$srs$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createInitialSRSState"])(), rating);
+            const nextProgress = {
+                ...vocabProgress,
+                [cardId]: next
+            };
+            const { lastActive, streak: nextStreak } = bumpStreak(lastActiveDate, streak);
+            const t = todayISO();
+            const stats = [
+                ...dailyStats
+            ];
+            const idx = stats.findIndex((d)=>d.date === t);
+            if (idx >= 0) {
+                stats[idx] = {
+                    ...stats[idx],
+                    cardsReviewed: stats[idx].cardsReviewed + 1
+                };
+            } else {
+                stats.push({
+                    date: t,
+                    cardsReviewed: 1,
+                    lessonsCompleted: 0
+                });
+            }
+            set({
+                vocabProgress: nextProgress,
+                dailyStats: stats,
+                lastActiveDate: lastActive,
+                streak: nextStreak
+            });
+        },
+        recordLessonComplete: (lessonId, score, total)=>{
+            const { grammarProgress, dailyStats, lastActiveDate, streak } = get();
+            const prev = grammarProgress[lessonId];
+            const completed = score >= total * 0.7;
+            const newlyCompleted = completed && !prev?.completed;
+            const nextGrammar = {
+                ...grammarProgress,
+                [lessonId]: {
+                    completed,
+                    score,
+                    total,
+                    lastAttempt: new Date().toISOString()
+                }
+            };
+            const { lastActive, streak: nextStreak } = bumpStreak(lastActiveDate, streak);
+            const t = todayISO();
+            const stats = [
+                ...dailyStats
+            ];
+            if (newlyCompleted) {
+                const idx = stats.findIndex((d)=>d.date === t);
+                if (idx >= 0) {
+                    stats[idx] = {
+                        ...stats[idx],
+                        lessonsCompleted: stats[idx].lessonsCompleted + 1
+                    };
+                } else {
+                    stats.push({
+                        date: t,
+                        cardsReviewed: 0,
+                        lessonsCompleted: 1
+                    });
+                }
+            }
+            set({
+                grammarProgress: nextGrammar,
+                dailyStats: stats,
+                lastActiveDate: lastActive,
+                streak: nextStreak
+            });
+        },
+        setSettings: (partial)=>{
+            set({
+                settings: {
+                    ...get().settings,
+                    ...partial
+                }
+            });
+        },
+        importState: (data)=>{
+            const cur = get();
+            set({
+                vocabProgress: data.vocabProgress ?? cur.vocabProgress,
+                grammarProgress: data.grammarProgress ?? cur.grammarProgress,
+                dailyStats: data.dailyStats ?? cur.dailyStats,
+                settings: {
+                    ...defaultSettings,
+                    ...cur.settings,
+                    ...data.settings
+                },
+                lastActiveDate: data.lastActiveDate ?? cur.lastActiveDate,
+                streak: data.streak ?? cur.streak
+            });
+        },
+        resetProgress: ()=>{
+            set({
+                vocabProgress: {},
+                grammarProgress: {},
+                dailyStats: [],
+                streak: 0,
+                lastActiveDate: todayISO()
+            });
+        }
+    }), {
+    name: "german-tutor-storage",
+    partialize: (state)=>({
+            vocabProgress: state.vocabProgress,
+            grammarProgress: state.grammarProgress,
+            dailyStats: state.dailyStats,
+            settings: state.settings,
+            lastActiveDate: state.lastActiveDate,
+            streak: state.streak
+        })
+}));
+function getDueCardIds(allCardIds, vocabProgress) {
+    return allCardIds.filter((id)=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$srs$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isDue"])(vocabProgress[id]));
+}
+}),
+"[project]/src/components/providers/theme-sync.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "ThemeSync",
+    ()=>ThemeSync
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-themes/dist/index.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/store.ts [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+function ThemeSync() {
+    const theme = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])((s)=>s.settings.theme);
+    const { setTheme } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTheme"])();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (theme === "system") {
+            setTheme("system");
+        } else if (theme === "dark") {
+            setTheme("dark");
+        } else if (theme === "light") {
+            setTheme("light");
+        }
+    }, [
+        theme,
+        setTheme
+    ]);
+    return null;
+}
+}),
+"[project]/src/lib/utils.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "cn",
+    ()=>cn
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/clsx/dist/clsx.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tailwind$2d$merge$2f$dist$2f$bundle$2d$mjs$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/tailwind-merge/dist/bundle-mjs.mjs [app-ssr] (ecmascript)");
+;
+;
+function cn(...inputs) {
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$tailwind$2d$merge$2f$dist$2f$bundle$2d$mjs$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["twMerge"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["clsx"])(inputs));
+}
+}),
+"[project]/src/components/ui/button.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Button",
+    ()=>Button,
+    "buttonVariants",
+    ()=>buttonVariants
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$slot$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@radix-ui/react-slot/dist/index.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/class-variance-authority/dist/index.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/utils.ts [app-ssr] (ecmascript)");
+;
+;
+;
+;
+;
+const buttonVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cva"])("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0", {
+    variants: {
+        variant: {
+            default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+            destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+            outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+            secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+            ghost: "hover:bg-accent hover:text-accent-foreground",
+            link: "text-primary underline-offset-4 hover:underline"
+        },
+        size: {
+            default: "h-9 px-4 py-2",
+            sm: "h-8 rounded-md px-3 text-xs",
+            lg: "h-10 rounded-md px-8",
+            icon: "h-9 w-9"
+        }
+    },
+    defaultVariants: {
+        variant: "default",
+        size: "default"
+    }
+});
+const Button = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ className, variant, size, asChild = false, ...props }, ref)=>{
+    const Comp = asChild ? __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$radix$2d$ui$2f$react$2d$slot$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Slot"] : "button";
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Comp, {
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])(buttonVariants({
+            variant,
+            size,
+            className
+        })),
+        ref: ref,
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/src/components/ui/button.tsx",
+        lineNumber: 45,
+        columnNumber: 7
+    }, ("TURBOPACK compile-time value", void 0));
+});
+Button.displayName = "Button";
+;
+}),
+"[project]/src/components/ui/badge.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Badge",
+    ()=>Badge,
+    "badgeVariants",
+    ()=>badgeVariants
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/class-variance-authority/dist/index.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/utils.ts [app-ssr] (ecmascript)");
+;
+;
+;
+const badgeVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cva"])("inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
+    variants: {
+        variant: {
+            default: "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+            secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+            destructive: "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
+            outline: "text-foreground"
+        }
+    },
+    defaultVariants: {
+        variant: "default"
+    }
+});
+function Badge({ className, variant, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])(badgeVariants({
+            variant
+        }), className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/src/components/ui/badge.tsx",
+        lineNumber: 31,
+        columnNumber: 5
+    }, this);
+}
+;
+}),
+"[project]/src/lib/levelAssessor.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "LEVEL_ORDER",
+    ()=>LEVEL_ORDER,
+    "estimateLevel",
+    ()=>estimateLevel,
+    "levelProgressForAll",
+    ()=>levelProgressForAll
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$srs$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/srs.ts [app-ssr] (ecmascript)");
+;
+const LEVEL_ORDER = [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+];
+function estimateLevel(vocabProgress, grammarProgress, totalCards, totalLessons) {
+    const masteredCards = Object.values(vocabProgress).filter((s)=>s.repetitions >= 2 && !(0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$srs$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["isDue"])(s)).length;
+    const vocabScore = totalCards > 0 ? masteredCards / totalCards : 0;
+    const completedLessons = Object.values(grammarProgress).filter((g)=>g.completed).length;
+    const grammarScore = totalLessons > 0 ? completedLessons / totalLessons : 0;
+    const combined = (vocabScore * 0.6 + grammarScore * 0.4) * 100;
+    let idx = 0;
+    if (combined >= 85) idx = 5;
+    else if (combined >= 70) idx = 4;
+    else if (combined >= 55) idx = 3;
+    else if (combined >= 40) idx = 2;
+    else if (combined >= 20) idx = 1;
+    const level = LEVEL_ORDER[idx];
+    const nextThreshold = idx < 5 ? [
+        20,
+        40,
+        55,
+        70,
+        85,
+        100
+    ][idx] : 100;
+    const prevThreshold = idx > 0 ? [
+        0,
+        20,
+        40,
+        55,
+        70,
+        85
+    ][idx] : 0;
+    const percentToNext = idx >= 5 ? 100 : Math.min(100, (combined - prevThreshold) / (nextThreshold - prevThreshold) * 100);
+    return {
+        level,
+        percentToNext: Number.isFinite(percentToNext) ? percentToNext : 0
+    };
+}
+function levelProgressForAll(currentLevel, vocabProgress, grammarProgress, totalCards, totalLessons) {
+    const { percentToNext } = estimateLevel(vocabProgress, grammarProgress, totalCards, totalLessons);
+    const idx = LEVEL_ORDER.indexOf(currentLevel);
+    const out = {};
+    LEVEL_ORDER.forEach((l, i)=>{
+        if (i < idx) out[l] = 100;
+        else if (i === idx) out[l] = Math.min(100, percentToNext);
+        else out[l] = 0;
+    });
+    return out;
+}
+}),
+"[project]/src/content/vocabulary/a1-basics.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-basics\",\"title\":\"Core words\",\"level\":\"A1\",\"topic\":\"basics\",\"cards\":[{\"id\":\"a1-ba-01\",\"german\":\"und\",\"english\":\"and\",\"gender\":null,\"example\":\"Brot und Käse.\",\"exampleEn\":\"Bread and cheese.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-02\",\"german\":\"oder\",\"english\":\"or\",\"gender\":null,\"example\":\"Tee oder Kaffee?\",\"exampleEn\":\"Tea or coffee?\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-03\",\"german\":\"aber\",\"english\":\"but\",\"gender\":null,\"example\":\"Klein, aber fein.\",\"exampleEn\":\"Small but nice.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-04\",\"german\":\"auch\",\"english\":\"also / too\",\"gender\":null,\"example\":\"Ich auch.\",\"exampleEn\":\"Me too.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-05\",\"german\":\"nicht\",\"english\":\"not\",\"gender\":null,\"example\":\"Das ist nicht richtig.\",\"exampleEn\":\"That is not correct.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-06\",\"german\":\"kein\",\"english\":\"no / not a\",\"gender\":null,\"example\":\"Ich habe keine Zeit.\",\"exampleEn\":\"I have no time.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-07\",\"german\":\"sehr\",\"english\":\"very\",\"gender\":null,\"example\":\"Sehr gut!\",\"exampleEn\":\"Very good!\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-08\",\"german\":\"gut\",\"english\":\"good\",\"gender\":null,\"example\":\"Ein guter Tag.\",\"exampleEn\":\"A good day.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-09\",\"german\":\"schlecht\",\"english\":\"bad\",\"gender\":null,\"example\":\"Schlechtes Wetter.\",\"exampleEn\":\"Bad weather.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-10\",\"german\":\"groß\",\"english\":\"big\",\"gender\":null,\"example\":\"Ein großes Haus.\",\"exampleEn\":\"A big house.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-11\",\"german\":\"klein\",\"english\":\"small\",\"gender\":null,\"example\":\"Ein kleines Kind.\",\"exampleEn\":\"A small child.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-12\",\"german\":\"neu\",\"english\":\"new\",\"gender\":null,\"example\":\"Ein neues Auto.\",\"exampleEn\":\"A new car.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-13\",\"german\":\"alt\",\"english\":\"old\",\"gender\":null,\"example\":\"Ein altes Buch.\",\"exampleEn\":\"An old book.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-14\",\"german\":\"hier\",\"english\":\"here\",\"gender\":null,\"example\":\"Komm hierher.\",\"exampleEn\":\"Come here.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-15\",\"german\":\"jetzt\",\"english\":\"now\",\"gender\":null,\"example\":\"Was machen wir jetzt?\",\"exampleEn\":\"What do we do now?\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-16\",\"german\":\"heute\",\"english\":\"today\",\"gender\":null,\"example\":\"Heute regnet es.\",\"exampleEn\":\"Today it rains.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-17\",\"german\":\"morgen\",\"english\":\"tomorrow / morning\",\"gender\":null,\"example\":\"Bis morgen!\",\"exampleEn\":\"See you tomorrow!\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-18\",\"german\":\"gestern\",\"english\":\"yesterday\",\"gender\":null,\"example\":\"Gestern war Sonntag.\",\"exampleEn\":\"Yesterday was Sunday.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-19\",\"german\":\"wichtig\",\"english\":\"important\",\"gender\":null,\"example\":\"Das ist wichtig.\",\"exampleEn\":\"That is important.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-20\",\"german\":\"leicht\",\"english\":\"easy / light\",\"gender\":null,\"example\":\"Die Übung ist leicht.\",\"exampleEn\":\"The exercise is easy.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-21\",\"german\":\"schwer\",\"english\":\"difficult / heavy\",\"gender\":null,\"example\":\"Die Prüfung war schwer.\",\"exampleEn\":\"The exam was difficult.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-22\",\"german\":\"vielleicht\",\"english\":\"maybe\",\"gender\":null,\"example\":\"Vielleicht später.\",\"exampleEn\":\"Maybe later.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-23\",\"german\":\"wirklich\",\"english\":\"really\",\"gender\":null,\"example\":\"Wirklich interessant.\",\"exampleEn\":\"Really interesting.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-24\",\"german\":\"noch\",\"english\":\"still / yet\",\"gender\":null,\"example\":\"Ich bin noch da.\",\"exampleEn\":\"I'm still here.\",\"level\":\"A1\",\"topic\":\"basics\"},{\"id\":\"a1-ba-25\",\"german\":\"schon\",\"english\":\"already\",\"gender\":null,\"example\":\"Bist du schon fertig?\",\"exampleEn\":\"Are you already done?\",\"level\":\"A1\",\"topic\":\"basics\"}]}"));}),
+"[project]/src/content/vocabulary/a1-colors.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-colors\",\"title\":\"Colors\",\"level\":\"A1\",\"topic\":\"colors\",\"cards\":[{\"id\":\"a1-co-01\",\"german\":\"rot\",\"english\":\"red\",\"gender\":null,\"example\":\"Das Auto ist rot.\",\"exampleEn\":\"The car is red.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-02\",\"german\":\"blau\",\"english\":\"blue\",\"gender\":null,\"example\":\"Der Himmel ist blau.\",\"exampleEn\":\"The sky is blue.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-03\",\"german\":\"grün\",\"english\":\"green\",\"gender\":null,\"example\":\"Das Gras ist grün.\",\"exampleEn\":\"The grass is green.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-04\",\"german\":\"gelb\",\"english\":\"yellow\",\"gender\":null,\"example\":\"Die Sonne ist gelb.\",\"exampleEn\":\"The sun is yellow.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-05\",\"german\":\"schwarz\",\"english\":\"black\",\"gender\":null,\"example\":\"Schwarze Schuhe.\",\"exampleEn\":\"Black shoes.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-06\",\"german\":\"weiß\",\"english\":\"white\",\"gender\":null,\"example\":\"Ein weißes Hemd.\",\"exampleEn\":\"A white shirt.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-07\",\"german\":\"grau\",\"english\":\"gray\",\"gender\":null,\"example\":\"Grauer Pullover.\",\"exampleEn\":\"Gray sweater.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-08\",\"german\":\"braun\",\"english\":\"brown\",\"gender\":null,\"example\":\"Braune Augen.\",\"exampleEn\":\"Brown eyes.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-09\",\"german\":\"orange\",\"english\":\"orange\",\"gender\":null,\"example\":\"Orange Früchte.\",\"exampleEn\":\"Orange fruits.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-10\",\"german\":\"lila\",\"english\":\"purple\",\"gender\":null,\"example\":\"Lila Blumen.\",\"exampleEn\":\"Purple flowers.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-11\",\"german\":\"rosa\",\"english\":\"pink\",\"gender\":null,\"example\":\"Rosa Tasche.\",\"exampleEn\":\"Pink bag.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-12\",\"german\":\"hell\",\"english\":\"light (color)\",\"gender\":null,\"example\":\"Helles Blau.\",\"exampleEn\":\"Light blue.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-13\",\"german\":\"dunkel\",\"english\":\"dark\",\"gender\":null,\"example\":\"Dunkelgrün.\",\"exampleEn\":\"Dark green.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-14\",\"german\":\"bunt\",\"english\":\"colorful\",\"gender\":null,\"example\":\"Ein buntes Bild.\",\"exampleEn\":\"A colorful picture.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-15\",\"german\":\"die Farbe\",\"english\":\"the color\",\"gender\":\"feminine\",\"example\":\"Welche Farbe magst du?\",\"exampleEn\":\"Which color do you like?\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-16\",\"german\":\"gold\",\"english\":\"gold\",\"gender\":null,\"example\":\"Goldene Uhr.\",\"exampleEn\":\"Gold watch.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-17\",\"german\":\"silber\",\"english\":\"silver\",\"gender\":null,\"example\":\"Silberner Ring.\",\"exampleEn\":\"Silver ring.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-18\",\"german\":\"beige\",\"english\":\"beige\",\"gender\":null,\"example\":\"Beige Hose.\",\"exampleEn\":\"Beige pants.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-19\",\"german\":\"türkis\",\"english\":\"turquoise\",\"gender\":null,\"example\":\"Türkises Meer.\",\"exampleEn\":\"Turquoise sea.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-20\",\"german\":\"farbig\",\"english\":\"colored\",\"gender\":null,\"example\":\"Farbiges Papier.\",\"exampleEn\":\"Colored paper.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-21\",\"german\":\"hautfarben\",\"english\":\"skin-colored\",\"gender\":null,\"example\":\"Hautfarbene Strümpfe.\",\"exampleEn\":\"Skin-colored stockings.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-22\",\"german\":\"nur\",\"english\":\"only\",\"gender\":null,\"example\":\"Nur schwarz oder weiß.\",\"exampleEn\":\"Only black or white.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-23\",\"german\":\"hellblau\",\"english\":\"light blue\",\"gender\":null,\"example\":\"Hellblauer Himmel.\",\"exampleEn\":\"Light blue sky.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-24\",\"german\":\"dunkelrot\",\"english\":\"dark red\",\"gender\":null,\"example\":\"Dunkelroter Wein.\",\"exampleEn\":\"Dark red wine.\",\"level\":\"A1\",\"topic\":\"colors\"},{\"id\":\"a1-co-25\",\"german\":\"bunt gemischt\",\"english\":\"mixed colors\",\"gender\":null,\"example\":\"Alles bunt gemischt.\",\"exampleEn\":\"All mixed colors.\",\"level\":\"A1\",\"topic\":\"colors\"}]}"));}),
+"[project]/src/content/vocabulary/a1-daily-routines.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-daily-routines\",\"title\":\"Daily routines\",\"level\":\"A1\",\"topic\":\"daily\",\"cards\":[{\"id\":\"a1-dr-01\",\"german\":\"aufstehen\",\"english\":\"to get up\",\"gender\":null,\"example\":\"Ich stehe um sieben auf.\",\"exampleEn\":\"I get up at seven.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-02\",\"german\":\"frühstücken\",\"english\":\"to have breakfast\",\"gender\":null,\"example\":\"Wir frühstücken zusammen.\",\"exampleEn\":\"We have breakfast together.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-03\",\"german\":\"arbeiten\",\"english\":\"to work\",\"gender\":null,\"example\":\"Sie arbeitet im Büro.\",\"exampleEn\":\"She works in an office.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-04\",\"german\":\"lernen\",\"english\":\"to learn / study\",\"gender\":null,\"example\":\"Ich lerne Deutsch.\",\"exampleEn\":\"I learn German.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-05\",\"german\":\"kochen\",\"english\":\"to cook\",\"gender\":null,\"example\":\"Er kocht gern.\",\"exampleEn\":\"He likes to cook.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-06\",\"german\":\"schlafen\",\"english\":\"to sleep\",\"gender\":null,\"example\":\"Die Kinder schlafen früh.\",\"exampleEn\":\"The children sleep early.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-07\",\"german\":\"einkaufen\",\"english\":\"to shop\",\"gender\":null,\"example\":\"Samstags einkaufen gehen.\",\"exampleEn\":\"Go shopping on Saturdays.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-08\",\"german\":\"spazieren gehen\",\"english\":\"to go for a walk\",\"gender\":null,\"example\":\"Wir gehen im Park spazieren.\",\"exampleEn\":\"We walk in the park.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-09\",\"german\":\"fernsehen\",\"english\":\"to watch TV\",\"gender\":null,\"example\":\"Abends fernsehen.\",\"exampleEn\":\"Watch TV in the evening.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-10\",\"german\":\"das Frühstück\",\"english\":\"the breakfast\",\"gender\":\"neuter\",\"example\":\"Ein gutes Frühstück.\",\"exampleEn\":\"A good breakfast.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-11\",\"german\":\"das Mittagessen\",\"english\":\"the lunch\",\"gender\":\"neuter\",\"example\":\"Mittagessen um zwölf.\",\"exampleEn\":\"Lunch at twelve.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-12\",\"german\":\"das Abendessen\",\"english\":\"the dinner\",\"gender\":\"neuter\",\"example\":\"Abendessen um acht.\",\"exampleEn\":\"Dinner at eight.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-13\",\"german\":\"morgens\",\"english\":\"in the morning\",\"gender\":null,\"example\":\"Morgens früh aufstehen.\",\"exampleEn\":\"Get up early in the morning.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-14\",\"german\":\"mittags\",\"english\":\"at noon\",\"gender\":null,\"example\":\"Mittags eine Pause.\",\"exampleEn\":\"A break at noon.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-15\",\"german\":\"abends\",\"english\":\"in the evening\",\"gender\":null,\"example\":\"Abends zu Hause.\",\"exampleEn\":\"At home in the evening.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-16\",\"german\":\"nachts\",\"english\":\"at night\",\"gender\":null,\"example\":\"Nachts ruhig.\",\"exampleEn\":\"Quiet at night.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-17\",\"german\":\"manchmal\",\"english\":\"sometimes\",\"gender\":null,\"example\":\"Manchmal schwimmen wir.\",\"exampleEn\":\"Sometimes we swim.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-18\",\"german\":\"immer\",\"english\":\"always\",\"gender\":null,\"example\":\"Immer pünktlich.\",\"exampleEn\":\"Always on time.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-19\",\"german\":\"nie\",\"english\":\"never\",\"gender\":null,\"example\":\"Nie zu spät.\",\"exampleEn\":\"Never too late.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-20\",\"german\":\"oft\",\"english\":\"often\",\"gender\":null,\"example\":\"Oft im Fitnessstudio.\",\"exampleEn\":\"Often at the gym.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-21\",\"german\":\"die Woche\",\"english\":\"the week\",\"gender\":\"feminine\",\"example\":\"Diese Woche bin ich beschäftigt.\",\"exampleEn\":\"I'm busy this week.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-22\",\"german\":\"das Wochenende\",\"english\":\"the weekend\",\"gender\":\"neuter\",\"example\":\"Schönes Wochenende!\",\"exampleEn\":\"Have a nice weekend!\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-23\",\"german\":\"pünktlich\",\"english\":\"on time\",\"gender\":null,\"example\":\"Bitte pünktlich sein.\",\"exampleEn\":\"Please be on time.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-24\",\"german\":\"müde\",\"english\":\"tired\",\"gender\":null,\"example\":\"Ich bin sehr müde.\",\"exampleEn\":\"I am very tired.\",\"level\":\"A1\",\"topic\":\"daily\"},{\"id\":\"a1-dr-25\",\"german\":\"sich duschen\",\"english\":\"to shower\",\"gender\":null,\"example\":\"Ich dusche jeden Morgen.\",\"exampleEn\":\"I shower every morning.\",\"level\":\"A1\",\"topic\":\"daily\"}]}"));}),
+"[project]/src/content/vocabulary/a1-directions.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-directions\",\"title\":\"Directions & places\",\"level\":\"A1\",\"topic\":\"directions\",\"cards\":[{\"id\":\"a1-di-01\",\"german\":\"links\",\"english\":\"left\",\"gender\":null,\"example\":\"Biegen Sie links ab.\",\"exampleEn\":\"Turn left.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-02\",\"german\":\"rechts\",\"english\":\"right\",\"gender\":null,\"example\":\"Die Bank ist rechts.\",\"exampleEn\":\"The bank is on the right.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-03\",\"german\":\"geradeaus\",\"english\":\"straight ahead\",\"gender\":null,\"example\":\"Immer geradeaus.\",\"exampleEn\":\"Always straight ahead.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-04\",\"german\":\"hier\",\"english\":\"here\",\"gender\":null,\"example\":\"Wir sind hier.\",\"exampleEn\":\"We are here.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-05\",\"german\":\"dort\",\"english\":\"there\",\"gender\":null,\"example\":\"Das Hotel ist dort.\",\"exampleEn\":\"The hotel is there.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-06\",\"german\":\"nord\",\"english\":\"north\",\"gender\":null,\"example\":\"Richtung Norden.\",\"exampleEn\":\"Towards the north.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-07\",\"german\":\"süd\",\"english\":\"south\",\"gender\":null,\"example\":\"Nach Süden fahren.\",\"exampleEn\":\"Drive south.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-08\",\"german\":\"die Straße\",\"english\":\"the street\",\"gender\":\"feminine\",\"example\":\"Diese Straße entlang.\",\"exampleEn\":\"Along this street.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-09\",\"german\":\"die Ecke\",\"english\":\"the corner\",\"gender\":\"feminine\",\"example\":\"An der nächsten Ecke.\",\"exampleEn\":\"At the next corner.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-10\",\"german\":\"die Kreuzung\",\"english\":\"the intersection\",\"gender\":\"feminine\",\"example\":\"An der Kreuzung halten.\",\"exampleEn\":\"Stop at the intersection.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-11\",\"german\":\"nah\",\"english\":\"near\",\"gender\":null,\"example\":\"Ganz nah beim Bahnhof.\",\"exampleEn\":\"Very near the station.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-12\",\"german\":\"weit\",\"english\":\"far\",\"gender\":null,\"example\":\"Zu weit zu Fuß.\",\"exampleEn\":\"Too far on foot.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-13\",\"german\":\"Wo ist ...?\",\"english\":\"Where is ...?\",\"gender\":null,\"example\":\"Wo ist die Toilette?\",\"exampleEn\":\"Where is the toilet?\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-14\",\"german\":\"Wie komme ich zu ...?\",\"english\":\"How do I get to ...?\",\"gender\":null,\"example\":\"Wie komme ich zum Museum?\",\"exampleEn\":\"How do I get to the museum?\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-15\",\"german\":\"der Bahnhof\",\"english\":\"the train station\",\"gender\":\"masculine\",\"example\":\"Am Hauptbahnhof.\",\"exampleEn\":\"At the main station.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-16\",\"german\":\"der Flughafen\",\"english\":\"the airport\",\"gender\":\"masculine\",\"example\":\"Vom Flughafen in die Stadt.\",\"exampleEn\":\"From the airport to the city.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-17\",\"german\":\"die Haltestelle\",\"english\":\"the stop (bus/tram)\",\"gender\":\"feminine\",\"example\":\"Nächste Haltestelle.\",\"exampleEn\":\"Next stop.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-18\",\"german\":\"die Karte\",\"english\":\"the map\",\"gender\":\"feminine\",\"example\":\"Haben Sie eine Karte?\",\"exampleEn\":\"Do you have a map?\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-19\",\"german\":\"in der Nähe\",\"english\":\"nearby\",\"gender\":null,\"example\":\"Ein Café in der Nähe.\",\"exampleEn\":\"A café nearby.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-20\",\"german\":\"gegenüber\",\"english\":\"opposite\",\"gender\":null,\"example\":\"Gegenüber vom Park.\",\"exampleEn\":\"Opposite the park.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-21\",\"german\":\"zwischen\",\"english\":\"between\",\"gender\":null,\"example\":\"Zwischen zwei Häusern.\",\"exampleEn\":\"Between two houses.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-22\",\"german\":\"neben\",\"english\":\"next to\",\"gender\":null,\"example\":\"Neben der Bank.\",\"exampleEn\":\"Next to the bank.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-23\",\"german\":\"vor\",\"english\":\"in front of / before\",\"gender\":null,\"example\":\"Vor dem Hotel.\",\"exampleEn\":\"In front of the hotel.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-24\",\"german\":\"hinter\",\"english\":\"behind\",\"gender\":null,\"example\":\"Hinter dem Haus.\",\"exampleEn\":\"Behind the house.\",\"level\":\"A1\",\"topic\":\"directions\"},{\"id\":\"a1-di-25\",\"german\":\"oben\",\"english\":\"upstairs / above\",\"gender\":null,\"example\":\"Das Büro ist oben.\",\"exampleEn\":\"The office is upstairs.\",\"level\":\"A1\",\"topic\":\"directions\"}]}"));}),
+"[project]/src/content/vocabulary/a1-family.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-family\",\"title\":\"Family & people\",\"level\":\"A1\",\"topic\":\"family\",\"cards\":[{\"id\":\"a1-fa-01\",\"german\":\"die Familie\",\"english\":\"the family\",\"gender\":\"feminine\",\"example\":\"Meine Familie ist groß.\",\"exampleEn\":\"My family is big.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-02\",\"german\":\"der Vater\",\"english\":\"the father\",\"gender\":\"masculine\",\"example\":\"Mein Vater arbeitet.\",\"exampleEn\":\"My father works.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-03\",\"german\":\"die Mutter\",\"english\":\"the mother\",\"gender\":\"feminine\",\"example\":\"Die Mutter kocht.\",\"exampleEn\":\"The mother cooks.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-04\",\"german\":\"der Sohn\",\"english\":\"the son\",\"gender\":\"masculine\",\"example\":\"Unser Sohn ist fünf.\",\"exampleEn\":\"Our son is five.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-05\",\"german\":\"die Tochter\",\"english\":\"the daughter\",\"gender\":\"feminine\",\"example\":\"Die Tochter singt.\",\"exampleEn\":\"The daughter sings.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-06\",\"german\":\"der Bruder\",\"english\":\"the brother\",\"gender\":\"masculine\",\"example\":\"Mein Bruder studiert.\",\"exampleEn\":\"My brother studies.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-07\",\"german\":\"die Schwester\",\"english\":\"the sister\",\"gender\":\"feminine\",\"example\":\"Die Schwester liest.\",\"exampleEn\":\"The sister reads.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-08\",\"german\":\"der Großvater\",\"english\":\"the grandfather\",\"gender\":\"masculine\",\"example\":\"Der Großvater erzählt.\",\"exampleEn\":\"The grandfather tells stories.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-09\",\"german\":\"die Großmutter\",\"english\":\"the grandmother\",\"gender\":\"feminine\",\"example\":\"Die Großmutter backt Kuchen.\",\"exampleEn\":\"The grandmother bakes cake.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-10\",\"german\":\"der Onkel\",\"english\":\"the uncle\",\"gender\":\"masculine\",\"example\":\"Mein Onkel wohnt in Köln.\",\"exampleEn\":\"My uncle lives in Cologne.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-11\",\"german\":\"die Tante\",\"english\":\"the aunt\",\"gender\":\"feminine\",\"example\":\"Die Tante besucht uns.\",\"exampleEn\":\"The aunt visits us.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-12\",\"german\":\"der Mann\",\"english\":\"the husband / man\",\"gender\":\"masculine\",\"example\":\"Ihr Mann ist Arzt.\",\"exampleEn\":\"Her husband is a doctor.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-13\",\"german\":\"die Frau\",\"english\":\"the wife / woman\",\"gender\":\"feminine\",\"example\":\"Die Frau arbeitet Teilzeit.\",\"exampleEn\":\"The woman works part-time.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-14\",\"german\":\"das Kind\",\"english\":\"the child\",\"gender\":\"neuter\",\"example\":\"Das Kind spielt.\",\"exampleEn\":\"The child plays.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-15\",\"german\":\"Freund\",\"english\":\"friend (male)\",\"gender\":\"masculine\",\"example\":\"Ein guter Freund.\",\"exampleEn\":\"A good friend.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-16\",\"german\":\"Freundin\",\"english\":\"friend (female)\",\"gender\":\"feminine\",\"example\":\"Meine beste Freundin.\",\"exampleEn\":\"My best friend.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-17\",\"german\":\"verheiratet\",\"english\":\"married\",\"gender\":null,\"example\":\"Sie sind verheiratet.\",\"exampleEn\":\"They are married.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-18\",\"german\":\"ledig\",\"english\":\"single\",\"gender\":null,\"example\":\"Er ist noch ledig.\",\"exampleEn\":\"He is still single.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-19\",\"german\":\"älter\",\"english\":\"older\",\"gender\":null,\"example\":\"Mein älterer Bruder.\",\"exampleEn\":\"My older brother.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-20\",\"german\":\"jünger\",\"english\":\"younger\",\"gender\":null,\"example\":\"Die jüngere Schwester.\",\"exampleEn\":\"The younger sister.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-21\",\"german\":\"der Junge\",\"english\":\"the boy\",\"gender\":\"masculine\",\"example\":\"Der Junge lacht.\",\"exampleEn\":\"The boy laughs.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-22\",\"german\":\"das Mädchen\",\"english\":\"the girl\",\"gender\":\"neuter\",\"example\":\"Das Mädchen tanzt.\",\"exampleEn\":\"The girl dances.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-23\",\"german\":\"die Eltern\",\"english\":\"the parents\",\"gender\":\"plural\",\"example\":\"Meine Eltern wohnen hier.\",\"exampleEn\":\"My parents live here.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-24\",\"german\":\"geschieden\",\"english\":\"divorced\",\"gender\":null,\"example\":\"Sie ist geschieden.\",\"exampleEn\":\"She is divorced.\",\"level\":\"A1\",\"topic\":\"family\"},{\"id\":\"a1-fa-25\",\"german\":\"der Partner\",\"english\":\"the partner\",\"gender\":\"masculine\",\"example\":\"Mein Partner kocht.\",\"exampleEn\":\"My partner cooks.\",\"level\":\"A1\",\"topic\":\"family\"}]}"));}),
+"[project]/src/content/vocabulary/a1-food.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-food\",\"title\":\"Food & drink\",\"level\":\"A1\",\"topic\":\"food\",\"cards\":[{\"id\":\"a1-fo-01\",\"german\":\"das Brot\",\"english\":\"the bread\",\"gender\":\"neuter\",\"example\":\"Frisches Brot vom Bäcker.\",\"exampleEn\":\"Fresh bread from the baker.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-02\",\"german\":\"der Käse\",\"english\":\"the cheese\",\"gender\":\"masculine\",\"example\":\"Käse zum Frühstück.\",\"exampleEn\":\"Cheese for breakfast.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-03\",\"german\":\"die Milch\",\"english\":\"the milk\",\"gender\":\"feminine\",\"example\":\"Kalte Milch im Kühlschrank.\",\"exampleEn\":\"Cold milk in the fridge.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-04\",\"german\":\"das Wasser\",\"english\":\"the water\",\"gender\":\"neuter\",\"example\":\"Ein Glas Wasser, bitte.\",\"exampleEn\":\"A glass of water, please.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-05\",\"german\":\"der Kaffee\",\"english\":\"the coffee\",\"gender\":\"masculine\",\"example\":\"Schwarzer Kaffee.\",\"exampleEn\":\"Black coffee.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-06\",\"german\":\"der Tee\",\"english\":\"the tea\",\"gender\":\"masculine\",\"example\":\"Tee mit Zitrone.\",\"exampleEn\":\"Tea with lemon.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-07\",\"german\":\"der Apfel\",\"english\":\"the apple\",\"gender\":\"masculine\",\"example\":\"Ich esse einen Apfel.\",\"exampleEn\":\"I eat an apple.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-08\",\"german\":\"die Banane\",\"english\":\"the banana\",\"gender\":\"feminine\",\"example\":\"Reife Bananen.\",\"exampleEn\":\"Ripe bananas.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-09\",\"german\":\"das Fleisch\",\"english\":\"the meat\",\"gender\":\"neuter\",\"example\":\"Kein Fleisch, ich bin Vegetarier.\",\"exampleEn\":\"No meat, I'm vegetarian.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-10\",\"german\":\"der Fisch\",\"english\":\"the fish\",\"gender\":\"masculine\",\"example\":\"Gegrillter Fisch.\",\"exampleEn\":\"Grilled fish.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-11\",\"german\":\"die Kartoffel\",\"english\":\"the potato\",\"gender\":\"feminine\",\"example\":\"Salzkartoffeln.\",\"exampleEn\":\"Boiled potatoes.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-12\",\"german\":\"die Tomate\",\"english\":\"the tomato\",\"gender\":\"feminine\",\"example\":\"Frische Tomaten.\",\"exampleEn\":\"Fresh tomatoes.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-13\",\"german\":\"der Salat\",\"english\":\"the salad / lettuce\",\"gender\":\"masculine\",\"example\":\"Grüner Salat.\",\"exampleEn\":\"Green salad.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-14\",\"german\":\"das Ei\",\"english\":\"the egg\",\"gender\":\"neuter\",\"example\":\"Zwei Eier zum Frühstück.\",\"exampleEn\":\"Two eggs for breakfast.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-15\",\"german\":\"die Suppe\",\"english\":\"the soup\",\"gender\":\"feminine\",\"example\":\"Heiße Tomatensuppe.\",\"exampleEn\":\"Hot tomato soup.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-16\",\"german\":\"der Reis\",\"english\":\"the rice\",\"gender\":\"masculine\",\"example\":\"Reis mit Gemüse.\",\"exampleEn\":\"Rice with vegetables.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-17\",\"german\":\"die Nudeln\",\"english\":\"the pasta\",\"gender\":\"plural\",\"example\":\"Nudeln mit Soße.\",\"exampleEn\":\"Pasta with sauce.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-18\",\"german\":\"süß\",\"english\":\"sweet\",\"gender\":null,\"example\":\"Zu süß für mich.\",\"exampleEn\":\"Too sweet for me.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-19\",\"german\":\"salzig\",\"english\":\"salty\",\"gender\":null,\"example\":\"Das ist sehr salzig.\",\"exampleEn\":\"That is very salty.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-20\",\"german\":\"sauer\",\"english\":\"sour\",\"gender\":null,\"example\":\"Zitronen sind sauer.\",\"exampleEn\":\"Lemons are sour.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-21\",\"german\":\"der Zucker\",\"english\":\"the sugar\",\"gender\":\"masculine\",\"example\":\"Ohne Zucker, bitte.\",\"exampleEn\":\"Without sugar, please.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-22\",\"german\":\"das Salz\",\"english\":\"the salt\",\"gender\":\"neuter\",\"example\":\"Etwas Salz dazu.\",\"exampleEn\":\"Some salt with it.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-23\",\"german\":\"der Saft\",\"english\":\"the juice\",\"gender\":\"masculine\",\"example\":\"Orangensaft.\",\"exampleEn\":\"Orange juice.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-24\",\"german\":\"das Bier\",\"english\":\"the beer\",\"gender\":\"neuter\",\"example\":\"Ein Bier, bitte.\",\"exampleEn\":\"A beer, please.\",\"level\":\"A1\",\"topic\":\"food\"},{\"id\":\"a1-fo-25\",\"german\":\"der Wein\",\"english\":\"the wine\",\"gender\":\"masculine\",\"example\":\"Rotwein zum Essen.\",\"exampleEn\":\"Red wine with dinner.\",\"level\":\"A1\",\"topic\":\"food\"}]}"));}),
+"[project]/src/content/vocabulary/a1-greetings.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-greetings\",\"title\":\"Greetings & basics\",\"level\":\"A1\",\"topic\":\"greetings\",\"cards\":[{\"id\":\"a1-gr-01\",\"german\":\"Hallo\",\"english\":\"Hello\",\"gender\":null,\"example\":\"Hallo, wie geht es dir?\",\"exampleEn\":\"Hello, how are you?\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-02\",\"german\":\"Guten Tag\",\"english\":\"Good day\",\"gender\":null,\"example\":\"Guten Tag, kann ich helfen?\",\"exampleEn\":\"Good day, can I help?\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-03\",\"german\":\"Guten Morgen\",\"english\":\"Good morning\",\"gender\":null,\"example\":\"Guten Morgen, Frau Müller.\",\"exampleEn\":\"Good morning, Ms. Müller.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-04\",\"german\":\"Guten Abend\",\"english\":\"Good evening\",\"gender\":null,\"example\":\"Guten Abend, herzlich willkommen.\",\"exampleEn\":\"Good evening, welcome.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-05\",\"german\":\"Gute Nacht\",\"english\":\"Good night\",\"gender\":null,\"example\":\"Gute Nacht und schlaf gut.\",\"exampleEn\":\"Good night and sleep well.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-06\",\"german\":\"Tschüss\",\"english\":\"Bye\",\"gender\":null,\"example\":\"Tschüss, bis morgen!\",\"exampleEn\":\"Bye, see you tomorrow!\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-07\",\"german\":\"Auf Wiedersehen\",\"english\":\"Goodbye\",\"gender\":null,\"example\":\"Auf Wiedersehen und vielen Dank.\",\"exampleEn\":\"Goodbye and thank you very much.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-08\",\"german\":\"Bitte\",\"english\":\"Please / You're welcome\",\"gender\":null,\"example\":\"Bitte sehr.\",\"exampleEn\":\"You're welcome.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-09\",\"german\":\"Danke\",\"english\":\"Thanks\",\"gender\":null,\"example\":\"Danke für die Hilfe.\",\"exampleEn\":\"Thanks for the help.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-10\",\"german\":\"Entschuldigung\",\"english\":\"Excuse me / Sorry\",\"gender\":null,\"example\":\"Entschuldigung, wo ist der Bahnhof?\",\"exampleEn\":\"Excuse me, where is the station?\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-11\",\"german\":\"Ja\",\"english\":\"Yes\",\"gender\":null,\"example\":\"Ja, das stimmt.\",\"exampleEn\":\"Yes, that's right.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-12\",\"german\":\"Nein\",\"english\":\"No\",\"gender\":null,\"example\":\"Nein, danke.\",\"exampleEn\":\"No, thanks.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-13\",\"german\":\"Wie geht's?\",\"english\":\"How are you?\",\"gender\":null,\"example\":\"Hey, wie geht's?\",\"exampleEn\":\"Hey, how are you?\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-14\",\"german\":\"Mir geht's gut\",\"english\":\"I'm fine\",\"gender\":null,\"example\":\"Mir geht's gut, danke.\",\"exampleEn\":\"I'm fine, thanks.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-15\",\"german\":\"Freut mich\",\"english\":\"Nice to meet you\",\"gender\":null,\"example\":\"Freut mich, ich bin Anna.\",\"exampleEn\":\"Nice to meet you, I'm Anna.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-16\",\"german\":\"Bis bald\",\"english\":\"See you soon\",\"gender\":null,\"example\":\"Bis bald im Café!\",\"exampleEn\":\"See you soon at the café!\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-17\",\"german\":\"Bis später\",\"english\":\"See you later\",\"gender\":null,\"example\":\"Bis später im Büro.\",\"exampleEn\":\"See you later at the office.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-18\",\"german\":\"Herzlich willkommen\",\"english\":\"Welcome\",\"gender\":null,\"example\":\"Herzlich willkommen in Berlin.\",\"exampleEn\":\"Welcome to Berlin.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-19\",\"german\":\"Gern geschehen\",\"english\":\"You're welcome\",\"gender\":null,\"example\":\"Gern geschehen!\",\"exampleEn\":\"You're welcome!\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-20\",\"german\":\"Wie heißt du?\",\"english\":\"What's your name? (informal)\",\"gender\":null,\"example\":\"Wie heißt du?\",\"exampleEn\":\"What's your name?\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-21\",\"german\":\"Ich heiße\",\"english\":\"My name is\",\"gender\":null,\"example\":\"Ich heiße Tom.\",\"exampleEn\":\"My name is Tom.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-22\",\"german\":\"Schönen Tag noch\",\"english\":\"Have a nice day\",\"gender\":null,\"example\":\"Schönen Tag noch!\",\"exampleEn\":\"Have a nice day!\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-23\",\"german\":\"Viel Glück\",\"english\":\"Good luck\",\"gender\":null,\"example\":\"Viel Glück bei der Prüfung.\",\"exampleEn\":\"Good luck on the exam.\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-24\",\"german\":\"Prost\",\"english\":\"Cheers\",\"gender\":null,\"example\":\"Prost, auf ein gutes Jahr!\",\"exampleEn\":\"Cheers, to a good year!\",\"level\":\"A1\",\"topic\":\"greetings\"},{\"id\":\"a1-gr-25\",\"german\":\"Mach's gut\",\"english\":\"Take care\",\"gender\":null,\"example\":\"Mach's gut, bis dann!\",\"exampleEn\":\"Take care, see you!\",\"level\":\"A1\",\"topic\":\"greetings\"}]}"));}),
+"[project]/src/content/vocabulary/a1-numbers.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-numbers\",\"title\":\"Numbers\",\"level\":\"A1\",\"topic\":\"numbers\",\"cards\":[{\"id\":\"a1-nu-01\",\"german\":\"null\",\"english\":\"zero\",\"gender\":null,\"example\":\"Die Temperatur ist null Grad.\",\"exampleEn\":\"The temperature is zero degrees.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-02\",\"german\":\"eins\",\"english\":\"one\",\"gender\":null,\"example\":\"Ich habe nur eins.\",\"exampleEn\":\"I only have one.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-03\",\"german\":\"zwei\",\"english\":\"two\",\"gender\":null,\"example\":\"Zwei Kaffee, bitte.\",\"exampleEn\":\"Two coffees, please.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-04\",\"german\":\"drei\",\"english\":\"three\",\"gender\":null,\"example\":\"Drei Tickets, bitte.\",\"exampleEn\":\"Three tickets, please.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-05\",\"german\":\"vier\",\"english\":\"four\",\"gender\":null,\"example\":\"Wir sind zu viert.\",\"exampleEn\":\"There are four of us.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-06\",\"german\":\"fünf\",\"english\":\"five\",\"gender\":null,\"example\":\"Es kostet fünf Euro.\",\"exampleEn\":\"It costs five euros.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-07\",\"german\":\"sechs\",\"english\":\"six\",\"gender\":null,\"example\":\"Der Bus kommt um sechs.\",\"exampleEn\":\"The bus comes at six.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-08\",\"german\":\"sieben\",\"english\":\"seven\",\"gender\":null,\"example\":\"Sieben Tage die Woche.\",\"exampleEn\":\"Seven days a week.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-09\",\"german\":\"acht\",\"english\":\"eight\",\"gender\":null,\"example\":\"Acht Uhr ist gut.\",\"exampleEn\":\"Eight o'clock is good.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-10\",\"german\":\"neun\",\"english\":\"nine\",\"gender\":null,\"example\":\"Neun Personen warten.\",\"exampleEn\":\"Nine people are waiting.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-11\",\"german\":\"zehn\",\"english\":\"ten\",\"gender\":null,\"example\":\"Zehn Minuten noch.\",\"exampleEn\":\"Ten more minutes.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-12\",\"german\":\"elf\",\"english\":\"eleven\",\"gender\":null,\"example\":\"Elf Uhr treffen wir uns.\",\"exampleEn\":\"We meet at eleven.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-13\",\"german\":\"zwölf\",\"english\":\"twelve\",\"gender\":null,\"example\":\"Zwölf Monate im Jahr.\",\"exampleEn\":\"Twelve months in a year.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-14\",\"german\":\"dreizehn\",\"english\":\"thirteen\",\"gender\":null,\"example\":\"Sie ist dreizehn Jahre alt.\",\"exampleEn\":\"She is thirteen years old.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-15\",\"german\":\"zwanzig\",\"english\":\"twenty\",\"gender\":null,\"example\":\"Zwanzig Minuten Fahrt.\",\"exampleEn\":\"Twenty minutes of travel.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-16\",\"german\":\"dreißig\",\"english\":\"thirty\",\"gender\":null,\"example\":\"Er ist dreißig.\",\"exampleEn\":\"He is thirty.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-17\",\"german\":\"vierzig\",\"english\":\"forty\",\"gender\":null,\"example\":\"Vierzig Euro, bitte.\",\"exampleEn\":\"Forty euros, please.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-18\",\"german\":\"fünfzig\",\"english\":\"fifty\",\"gender\":null,\"example\":\"Fünfzig Prozent Rabatt.\",\"exampleEn\":\"Fifty percent discount.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-19\",\"german\":\"hundert\",\"english\":\"hundred\",\"gender\":null,\"example\":\"Hundert Meter weiter.\",\"exampleEn\":\"One hundred meters further.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-20\",\"german\":\"tausend\",\"english\":\"thousand\",\"gender\":null,\"example\":\"Tausend Dank!\",\"exampleEn\":\"Thanks a thousand!\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-21\",\"german\":\"erste\",\"english\":\"first\",\"gender\":null,\"example\":\"Die erste Straße links.\",\"exampleEn\":\"The first street on the left.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-22\",\"german\":\"zweite\",\"english\":\"second\",\"gender\":null,\"example\":\"Im zweiten Stock.\",\"exampleEn\":\"On the second floor.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-23\",\"german\":\"die Hälfte\",\"english\":\"half\",\"gender\":\"feminine\",\"example\":\"Nur die Hälfte.\",\"exampleEn\":\"Only half.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-24\",\"german\":\"doppelt\",\"english\":\"double\",\"gender\":null,\"example\":\"Doppelt so teuer.\",\"exampleEn\":\"Twice as expensive.\",\"level\":\"A1\",\"topic\":\"numbers\"},{\"id\":\"a1-nu-25\",\"german\":\"mal\",\"english\":\"times (math)\",\"gender\":null,\"example\":\"Zwei mal drei ist sechs.\",\"exampleEn\":\"Two times three is six.\",\"level\":\"A1\",\"topic\":\"numbers\"}]}"));}),
+"[project]/src/content/grammar/a1-articles.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-articles\",\"title\":\"Definite articles (der, die, das)\",\"level\":\"A1\",\"summary\":\"German nouns have grammatical gender. The definite article changes with gender and case.\",\"sections\":[{\"heading\":\"Nominative singular\",\"body\":[\"Masculine nouns use der, feminine nouns use die, neuter nouns use das in the nominative case (subject of the sentence).\",\"Examples: der Mann, die Frau, das Kind.\"],\"examples\":[{\"de\":\"Der Hund ist braun.\",\"en\":\"The dog is brown.\"},{\"de\":\"Die Katze schläft.\",\"en\":\"The cat sleeps.\"},{\"de\":\"Das Auto ist neu.\",\"en\":\"The car is new.\"}],\"table\":{\"headers\":[\"Gender\",\"Article\",\"Example\"],\"rows\":[{\"cells\":[\"Masculine\",\"der\",\"der Tisch\"]},{\"cells\":[\"Feminine\",\"die\",\"die Tür\"]},{\"cells\":[\"Neuter\",\"das\",\"das Buch\"]}]}}],\"exercises\":[{\"id\":\"a1-art-1\",\"type\":\"fillBlank\",\"prompt\":\"___ Sonne scheint. (die Sonne)\",\"answer\":\"Die\",\"alternatives\":[\"die\"],\"explanation\":\"Sonne is feminine; capitalize the first word in a sentence.\"},{\"id\":\"a1-art-2\",\"type\":\"multipleChoice\",\"question\":\"Which article is correct for \\\"Haus\\\" (house)?\",\"options\":[\"der\",\"die\",\"das\",\"den\"],\"correctIndex\":2,\"explanation\":\"Haus is neuter: das Haus.\"},{\"id\":\"a1-art-3\",\"type\":\"fillBlank\",\"prompt\":\"___ Mann liest. (der Mann)\",\"answer\":\"Der\",\"explanation\":\"Mann is masculine.\"},{\"id\":\"a1-art-4\",\"type\":\"multipleChoice\",\"question\":\"Which article matches \\\"Zeitung\\\" (newspaper)?\",\"options\":[\"der\",\"die\",\"das\",\"dem\"],\"correctIndex\":1,\"explanation\":\"Zeitung is feminine: die Zeitung.\"},{\"id\":\"a1-art-5\",\"type\":\"wordOrder\",\"words\":[\"ist\",\"Der\",\"groß\",\"Tisch\"],\"correctOrder\":[\"Der\",\"Tisch\",\"ist\",\"groß\"],\"explanation\":\"Subject-verb-object/adjective order in simple statements.\"},{\"id\":\"a1-art-6\",\"type\":\"fillBlank\",\"prompt\":\"___ Buch liegt auf dem Tisch.\",\"answer\":\"Das\",\"explanation\":\"Buch is neuter.\"}]}"));}),
+"[project]/src/content/grammar/a1-negation.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-negation\",\"title\":\"Negation: nicht and kein\",\"level\":\"A1\",\"summary\":\"Use nicht to negate verbs/adjectives; use kein to negate nouns with indefinite meaning.\",\"sections\":[{\"heading\":\"nicht\",\"body\":[\"Typically placed before what is negated: Ich mag das nicht.\",\"With verbs, often at end: Ich komme heute nicht.\"],\"examples\":[{\"de\":\"Das ist nicht richtig.\",\"en\":\"That is not correct.\"},{\"de\":\"Ich verstehe nicht.\",\"en\":\"I don't understand.\"}]},{\"heading\":\"kein\",\"body\":[\"Replaces ein/eine: Ich habe kein Auto.\",\"Declines like ein: keine Freunde (plural).\"],\"examples\":[{\"de\":\"Ich habe Zeit. → Ich habe keine Zeit.\",\"en\":\"I have no time.\"}]}],\"exercises\":[{\"id\":\"a1-neg-1\",\"type\":\"fillBlank\",\"prompt\":\"Ich spreche ___ Deutsch.\",\"answer\":\"kein\",\"explanation\":\"Negating a noun with indefinite article → kein\"},{\"id\":\"a1-neg-2\",\"type\":\"multipleChoice\",\"question\":\"Which negates \\\"Ich bin müde\\\" naturally?\",\"options\":[\"Ich bin nicht müde.\",\"Ich nicht bin müde.\",\"Ich bin müde nicht.\",\"Ich kein bin müde.\"],\"correctIndex\":0,\"explanation\":\"nicht before the adjective or at end.\"},{\"id\":\"a1-neg-3\",\"type\":\"fillBlank\",\"prompt\":\"Das stimmt ___.\",\"answer\":\"nicht\",\"explanation\":\"nicht negates the whole statement.\"},{\"id\":\"a1-neg-4\",\"type\":\"fillBlank\",\"prompt\":\"Ich habe ___ Lust.\",\"answer\":\"keine\",\"explanation\":\"feminine noun: keine Lust\"},{\"id\":\"a1-neg-5\",\"type\":\"wordOrder\",\"words\":[\"nicht\",\"Heute\",\"komme\",\"ich\"],\"correctOrder\":[\"Heute\",\"komme\",\"ich\",\"nicht\"],\"explanation\":\"Time first, then V2, then subject, nicht often at end.\"},{\"id\":\"a1-neg-6\",\"type\":\"multipleChoice\",\"question\":\"Which means \\\"no milk\\\"?\",\"options\":[\"nicht Milch\",\"kein Milch\",\"keine Milch\",\"nicht die Milch\"],\"correctIndex\":2,\"explanation\":\"Milch is feminine: keine Milch.\"}]}"));}),
+"[project]/src/content/grammar/a1-personal-pronouns.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-personal-pronouns\",\"title\":\"Personal pronouns\",\"level\":\"A1\",\"summary\":\"German personal pronouns replace nouns and change with person and number.\",\"sections\":[{\"heading\":\"Nominative pronouns\",\"body\":[\"ich (I), du (you informal), er/sie/es (he/she/it), wir (we), ihr (you plural informal), sie/Sie (they/you formal).\"],\"examples\":[{\"de\":\"Ich bin Student.\",\"en\":\"I am a student.\"},{\"de\":\"Sie ist Lehrerin.\",\"en\":\"She is a teacher.\"},{\"de\":\"Wir lernen Deutsch.\",\"en\":\"We learn German.\"}],\"table\":{\"headers\":[\"Person\",\"Pronoun\"],\"rows\":[{\"cells\":[\"1st sg.\",\"ich\"]},{\"cells\":[\"2nd sg. informal\",\"du\"]},{\"cells\":[\"3rd sg. m.\",\"er\"]},{\"cells\":[\"3rd sg. f.\",\"sie\"]},{\"cells\":[\"3rd sg. n.\",\"es\"]},{\"cells\":[\"1st pl.\",\"wir\"]}]}}],\"exercises\":[{\"id\":\"a1-pr-1\",\"type\":\"fillBlank\",\"prompt\":\"___ heiße Anna.\",\"answer\":\"Ich\",\"explanation\":\"First person singular.\"},{\"id\":\"a1-pr-2\",\"type\":\"multipleChoice\",\"question\":\"Which pronoun replaces \\\"der Mann\\\" (subject)?\",\"options\":[\"sie\",\"er\",\"es\",\"ihn\"],\"correctIndex\":1,\"explanation\":\"Masculine singular subject → er.\"},{\"id\":\"a1-pr-3\",\"type\":\"fillBlank\",\"prompt\":\"___ sind aus Berlin.\",\"answer\":\"Wir\",\"explanation\":\"We are from Berlin.\"},{\"id\":\"a1-pr-4\",\"type\":\"multipleChoice\",\"question\":\"Formal \\\"you\\\" (singular) is:\",\"options\":[\"du\",\"ihr\",\"Sie\",\"sie\"],\"correctIndex\":2,\"explanation\":\"Capital Sie is formal you.\"},{\"id\":\"a1-pr-5\",\"type\":\"wordOrder\",\"words\":[\"lernen\",\"Deutsch\",\"Wir\"],\"correctOrder\":[\"Wir\",\"lernen\",\"Deutsch\"],\"explanation\":\"SVO in main clauses.\"}]}"));}),
+"[project]/src/content/grammar/a1-present-tense.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-present-tense\",\"title\":\"Present tense (regular verbs)\",\"level\":\"A1\",\"summary\":\"Regular verbs add endings to the stem: -e, -st, -t, -en, -t, -en.\",\"sections\":[{\"heading\":\"Conjugation of lernen\",\"body\":[\"Remove -en to get the stem lern-, then add endings.\",\"ich lerne, du lernst, er/sie/es lernt, wir lernen, ihr lernt, sie lernen.\"],\"examples\":[{\"de\":\"Ich lerne jeden Tag.\",\"en\":\"I learn every day.\"},{\"de\":\"Du spielst Fußball.\",\"en\":\"You play football.\"}]}],\"exercises\":[{\"id\":\"a1-pt-1\",\"type\":\"fillBlank\",\"prompt\":\"Du ___ Deutsch. (lernen)\",\"answer\":\"lernst\",\"explanation\":\"du + -st\"},{\"id\":\"a1-pt-2\",\"type\":\"multipleChoice\",\"question\":\"Which form is correct for \\\"sie\\\" (she) with \\\"wohnen\\\"?\",\"options\":[\"wohne\",\"wohnst\",\"wohnt\",\"wohnen\"],\"correctIndex\":2,\"explanation\":\"er/sie/es + -t\"},{\"id\":\"a1-pt-3\",\"type\":\"fillBlank\",\"prompt\":\"Wir ___ in München. (wohnen)\",\"answer\":\"wohnen\",\"explanation\":\"wir + -en\"},{\"id\":\"a1-pt-4\",\"type\":\"fillBlank\",\"prompt\":\"Ihr ___ gut. (spielen)\",\"answer\":\"spielt\",\"explanation\":\"ihr + -t\"},{\"id\":\"a1-pt-5\",\"type\":\"wordOrder\",\"words\":[\"ich\",\"Kaffee\",\"trinke\"],\"correctOrder\":[\"ich\",\"trinke\",\"Kaffee\"],\"explanation\":\"SVO: Ich trinke Kaffee.\"},{\"id\":\"a1-pt-6\",\"type\":\"multipleChoice\",\"question\":\"ich + machen =\",\"options\":[\"machst\",\"mach\",\"mache\",\"macht\"],\"correctIndex\":2,\"explanation\":\"ich + -e\"}]}"));}),
+"[project]/src/content/grammar/a1-sein-haben.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-sein-haben\",\"title\":\"The verbs sein and haben\",\"level\":\"A1\",\"summary\":\"Sein (to be) and haben (to have) are irregular and very common.\",\"sections\":[{\"heading\":\"sein\",\"body\":[\"ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie sind.\"],\"examples\":[{\"de\":\"Ich bin müde.\",\"en\":\"I am tired.\"},{\"de\":\"Wir sind zu Hause.\",\"en\":\"We are at home.\"}]},{\"heading\":\"haben\",\"body\":[\"ich habe, du hast, er/sie/es hat, wir haben, ihr habt, sie haben.\"],\"examples\":[{\"de\":\"Ich habe Zeit.\",\"en\":\"I have time.\"},{\"de\":\"Sie hat ein Auto.\",\"en\":\"She has a car.\"}]}],\"exercises\":[{\"id\":\"a1-sh-1\",\"type\":\"fillBlank\",\"prompt\":\"Du ___ sehr nett.\",\"answer\":\"bist\",\"explanation\":\"du + bist\"},{\"id\":\"a1-sh-2\",\"type\":\"multipleChoice\",\"question\":\"Which is correct: \\\"Er ___ ein Buch.\\\"\",\"options\":[\"habe\",\"hast\",\"hat\",\"haben\"],\"correctIndex\":2,\"explanation\":\"er/sie/es + hat\"},{\"id\":\"a1-sh-3\",\"type\":\"fillBlank\",\"prompt\":\"Wir ___ Studenten.\",\"answer\":\"sind\",\"explanation\":\"wir + sind\"},{\"id\":\"a1-sh-4\",\"type\":\"fillBlank\",\"prompt\":\"Ich ___ Hunger.\",\"answer\":\"habe\",\"explanation\":\"ich + habe\"},{\"id\":\"a1-sh-5\",\"type\":\"wordOrder\",\"words\":[\"ist\",\"Das\",\"richtig\"],\"correctOrder\":[\"Das\",\"ist\",\"richtig\"],\"explanation\":\"Das ist richtig.\"},{\"id\":\"a1-sh-6\",\"type\":\"multipleChoice\",\"question\":\"ihr + sein =\",\"options\":[\"seid\",\"sind\",\"bist\",\"bin\"],\"correctIndex\":0,\"explanation\":\"ihr seid\"}]}"));}),
+"[project]/src/content/grammar/a1-word-order.json (json)", ((__turbopack_context__) => {
+
+__turbopack_context__.v(JSON.parse("{\"id\":\"a1-word-order\",\"title\":\"Basic word order (V2)\",\"level\":\"A1\",\"summary\":\"In main clauses, the verb is usually in second position (V2 rule).\",\"sections\":[{\"heading\":\"Statement\",\"body\":[\"Subject often first: Ich gehe heute ins Kino.\",\"Time can be first: Heute gehe ich ins Kino. (verb stays second)\"],\"examples\":[{\"de\":\"Morgen fahren wir nach Berlin.\",\"en\":\"Tomorrow we travel to Berlin.\"},{\"de\":\"In Berlin gibt es viele Museen.\",\"en\":\"In Berlin there are many museums.\"}]}],\"exercises\":[{\"id\":\"a1-wo-1\",\"type\":\"wordOrder\",\"words\":[\"lese\",\"Ich\",\"ein Buch\"],\"correctOrder\":[\"Ich\",\"lese\",\"ein Buch\"],\"explanation\":\"S-V-O\"},{\"id\":\"a1-wo-2\",\"type\":\"wordOrder\",\"words\":[\"fahre\",\"Heute\",\"ich\",\"mit dem Bus\"],\"correctOrder\":[\"Heute\",\"fahre\",\"ich\",\"mit dem Bus\"],\"explanation\":\"Time first, then V2.\"},{\"id\":\"a1-wo-3\",\"type\":\"multipleChoice\",\"question\":\"Which sentence follows V2 correctly?\",\"options\":[\"Ich gehe oft spazieren.\",\"Ich oft gehe spazieren.\",\"Gehe ich oft spazieren.\",\"Ich spazieren gehe oft.\"],\"correctIndex\":0,\"explanation\":\"Verb in second position.\"},{\"id\":\"a1-wo-4\",\"type\":\"fillBlank\",\"prompt\":\"Jetzt ___ ich Kaffee. (trinken)\",\"answer\":\"trinke\",\"explanation\":\"Jetzt first, then verb.\"},{\"id\":\"a1-wo-5\",\"type\":\"wordOrder\",\"words\":[\"ist\",\"Das\",\"interessant\",\"sehr\"],\"correctOrder\":[\"Das\",\"ist\",\"sehr\",\"interessant\"],\"explanation\":\"Subject-verb-adjective.\"},{\"id\":\"a1-wo-6\",\"type\":\"fillBlank\",\"prompt\":\"___ du Deutsch? (sprechen)\",\"answer\":\"Sprichst\",\"explanation\":\"du-questions: verb first in questions.\"}]}"));}),
+"[project]/src/content/catalog.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "getAllCardIds",
+    ()=>getAllCardIds,
+    "getDeckById",
+    ()=>getDeckById,
+    "getLessonById",
+    ()=>getLessonById,
+    "grammarLessons",
+    ()=>grammarLessons,
+    "vocabDecks",
+    ()=>vocabDecks
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$basics$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/vocabulary/a1-basics.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$colors$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/vocabulary/a1-colors.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$daily$2d$routines$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/vocabulary/a1-daily-routines.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$directions$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/vocabulary/a1-directions.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$family$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/vocabulary/a1-family.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$food$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/vocabulary/a1-food.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$greetings$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/vocabulary/a1-greetings.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$numbers$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/vocabulary/a1-numbers.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$articles$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/grammar/a1-articles.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$negation$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/grammar/a1-negation.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$personal$2d$pronouns$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/grammar/a1-personal-pronouns.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$present$2d$tense$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/grammar/a1-present-tense.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$sein$2d$haben$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/grammar/a1-sein-haben.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$word$2d$order$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/content/grammar/a1-word-order.json (json)");
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+const vocabDecks = [
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$greetings$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$numbers$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$colors$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$family$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$food$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$directions$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$daily$2d$routines$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$vocabulary$2f$a1$2d$basics$2e$json__$28$json$29$__["default"]
+];
+const grammarLessons = [
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$articles$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$personal$2d$pronouns$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$present$2d$tense$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$sein$2d$haben$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$negation$2e$json__$28$json$29$__["default"],
+    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$grammar$2f$a1$2d$word$2d$order$2e$json__$28$json$29$__["default"]
+];
+function getDeckById(id) {
+    return vocabDecks.find((d)=>d.id === id);
+}
+function getAllCardIds() {
+    return vocabDecks.flatMap((d)=>d.cards.map((c)=>c.id));
+}
+function getLessonById(id) {
+    return grammarLessons.find((l)=>l.id === id);
+}
+}),
+"[project]/src/components/layout/Header.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Header",
+    ()=>Header
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/moon.js [app-ssr] (ecmascript) <export default as Moon>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sun$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sun$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/sun.js [app-ssr] (ecmascript) <export default as Sun>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-themes/dist/index.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/button.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ui/badge.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/store.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$levelAssessor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/levelAssessor.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/content/catalog.ts [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+;
+;
+;
+;
+function Header() {
+    const { theme, setTheme, resolvedTheme } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTheme"])();
+    const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const streak = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])((s)=>s.streak);
+    const setSettings = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])((s)=>s.setSettings);
+    const vocabProgress = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])((s)=>s.vocabProgress);
+    const grammarProgress = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAppStore"])((s)=>s.grammarProgress);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setMounted(true);
+    }, []);
+    const totalCards = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getAllCardIds"])().length;
+    const { level } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$levelAssessor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["estimateLevel"])(vocabProgress, grammarProgress, totalCards, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$content$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["grammarLessons"].length);
+    const dark = mounted && (resolvedTheme === "dark" || theme === "dark");
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
+        className: "flex h-14 items-center justify-between border-b border-border px-4 md:px-6",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "font-semibold md:hidden",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "text-destructive",
+                        children: "Deutsch"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Header.tsx",
+                        lineNumber: 37,
+                        columnNumber: 9
+                    }, this),
+                    " Tutor"
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/layout/Header.tsx",
+                lineNumber: 36,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "ml-auto flex items-center gap-2",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                        variant: "secondary",
+                        className: "font-mono text-xs",
+                        children: level
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Header.tsx",
+                        lineNumber: 40,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                        variant: "outline",
+                        className: "text-xs",
+                        children: [
+                            streak,
+                            " day streak"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/layout/Header.tsx",
+                        lineNumber: 43,
+                        columnNumber: 9
+                    }, this),
+                    mounted && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                        variant: "ghost",
+                        size: "icon",
+                        type: "button",
+                        "aria-label": "Toggle theme",
+                        onClick: ()=>{
+                            const next = dark ? "light" : "dark";
+                            setTheme(next);
+                            setSettings({
+                                theme: next
+                            });
+                        },
+                        children: dark ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sun$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sun$3e$__["Sun"], {
+                            className: "size-4"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/layout/Header.tsx",
+                            lineNumber: 58,
+                            columnNumber: 21
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__["Moon"], {
+                            className: "size-4"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/layout/Header.tsx",
+                            lineNumber: 58,
+                            columnNumber: 50
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Header.tsx",
+                        lineNumber: 47,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/layout/Header.tsx",
+                lineNumber: 39,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/layout/Header.tsx",
+        lineNumber: 35,
+        columnNumber: 5
+    }, this);
+}
+}),
+"[externals]/next/dist/server/app-render/action-async-storage.external.js [external] (next/dist/server/app-render/action-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("next/dist/server/app-render/action-async-storage.external.js", () => require("next/dist/server/app-render/action-async-storage.external.js"));
+
+module.exports = mod;
+}),
+"[externals]/next/dist/server/app-render/work-unit-async-storage.external.js [external] (next/dist/server/app-render/work-unit-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("next/dist/server/app-render/work-unit-async-storage.external.js", () => require("next/dist/server/app-render/work-unit-async-storage.external.js"));
+
+module.exports = mod;
+}),
+"[externals]/next/dist/server/app-render/work-async-storage.external.js [external] (next/dist/server/app-render/work-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("next/dist/server/app-render/work-async-storage.external.js", () => require("next/dist/server/app-render/work-async-storage.external.js"));
+
+module.exports = mod;
+}),
+"[project]/src/components/layout/Sidebar.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "MobileNav",
+    ()=>MobileNav,
+    "Sidebar",
+    ()=>Sidebar
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$book$2d$open$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOpen$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/book-open.js [app-ssr] (ecmascript) <export default as BookOpen>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/graduation-cap.js [app-ssr] (ecmascript) <export default as GraduationCap>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$house$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Home$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/house.js [app-ssr] (ecmascript) <export default as Home>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chart$2d$line$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LineChart$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chart-line.js [app-ssr] (ecmascript) <export default as LineChart>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/utils.ts [app-ssr] (ecmascript)");
+"use client";
+;
+;
+;
+;
+;
+const links = [
+    {
+        href: "/",
+        label: "Home",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$house$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Home$3e$__["Home"]
+    },
+    {
+        href: "/vocabulary",
+        label: "Vocabulary",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$book$2d$open$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOpen$3e$__["BookOpen"]
+    },
+    {
+        href: "/grammar",
+        label: "Grammar",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__["GraduationCap"]
+    },
+    {
+        href: "/progress",
+        label: "Progress",
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chart$2d$line$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LineChart$3e$__["LineChart"]
+    }
+];
+function Sidebar() {
+    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
+        className: "hidden w-56 shrink-0 border-r border-border bg-card md:block",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex h-14 items-center border-b border-border px-4",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    href: "/",
+                    className: "font-semibold tracking-tight",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "text-destructive",
+                            children: "Deutsch"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/layout/Sidebar.tsx",
+                            lineNumber: 22,
+                            columnNumber: 11
+                        }, this),
+                        " Tutor"
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/layout/Sidebar.tsx",
+                    lineNumber: 21,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/layout/Sidebar.tsx",
+                lineNumber: 20,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
+                className: "flex flex-col gap-1 p-3",
+                children: links.map(({ href, label, icon: Icon })=>{
+                    const active = pathname === href || href !== "/" && pathname.startsWith(href);
+                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        href: href,
+                        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors", active ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground"),
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
+                                className: "size-4"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/layout/Sidebar.tsx",
+                                lineNumber: 39,
+                                columnNumber: 15
+                            }, this),
+                            label
+                        ]
+                    }, href, true, {
+                        fileName: "[project]/src/components/layout/Sidebar.tsx",
+                        lineNumber: 29,
+                        columnNumber: 13
+                    }, this);
+                })
+            }, void 0, false, {
+                fileName: "[project]/src/components/layout/Sidebar.tsx",
+                lineNumber: 25,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/layout/Sidebar.tsx",
+        lineNumber: 19,
+        columnNumber: 5
+    }, this);
+}
+function MobileNav() {
+    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
+        className: "fixed bottom-0 left-0 right-0 z-50 flex border-t border-border bg-card/95 backdrop-blur md:hidden",
+        children: links.map(({ href, label, icon: Icon })=>{
+            const active = pathname === href || href !== "/" && pathname.startsWith(href);
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                href: href,
+                className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("flex flex-1 flex-col items-center gap-0.5 py-2 text-[10px] font-medium", active ? "text-destructive" : "text-muted-foreground"),
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
+                        className: "size-5"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Sidebar.tsx",
+                        lineNumber: 65,
+                        columnNumber: 13
+                    }, this),
+                    label
+                ]
+            }, href, true, {
+                fileName: "[project]/src/components/layout/Sidebar.tsx",
+                lineNumber: 57,
+                columnNumber: 11
+            }, this);
+        })
+    }, void 0, false, {
+        fileName: "[project]/src/components/layout/Sidebar.tsx",
+        lineNumber: 53,
+        columnNumber: 5
+    }, this);
+}
+}),
+];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__fcae5c50._.js.map

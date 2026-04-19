@@ -1,0 +1,33 @@
+{
+  "id": "a1-numbers",
+  "title": "Numbers",
+  "level": "A1",
+  "topic": "numbers",
+  "cards": [
+    {"id": "a1-nu-01", "german": "null", "english": "zero", "gender": null, "example": "Die Temperatur ist null Grad.", "exampleEn": "The temperature is zero degrees.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-02", "german": "eins", "english": "one", "gender": null, "example": "Ich habe nur eins.", "exampleEn": "I only have one.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-03", "german": "zwei", "english": "two", "gender": null, "example": "Zwei Kaffee, bitte.", "exampleEn": "Two coffees, please.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-04", "german": "drei", "english": "three", "gender": null, "example": "Drei Tickets, bitte.", "exampleEn": "Three tickets, please.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-05", "german": "vier", "english": "four", "gender": null, "example": "Wir sind zu viert.", "exampleEn": "There are four of us.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-06", "german": "fünf", "english": "five", "gender": null, "example": "Es kostet fünf Euro.", "exampleEn": "It costs five euros.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-07", "german": "sechs", "english": "six", "gender": null, "example": "Der Bus kommt um sechs.", "exampleEn": "The bus comes at six.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-08", "german": "sieben", "english": "seven", "gender": null, "example": "Sieben Tage die Woche.", "exampleEn": "Seven days a week.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-09", "german": "acht", "english": "eight", "gender": null, "example": "Acht Uhr ist gut.", "exampleEn": "Eight o'clock is good.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-10", "german": "neun", "english": "nine", "gender": null, "example": "Neun Personen warten.", "exampleEn": "Nine people are waiting.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-11", "german": "zehn", "english": "ten", "gender": null, "example": "Zehn Minuten noch.", "exampleEn": "Ten more minutes.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-12", "german": "elf", "english": "eleven", "gender": null, "example": "Elf Uhr treffen wir uns.", "exampleEn": "We meet at eleven.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-13", "german": "zwölf", "english": "twelve", "gender": null, "example": "Zwölf Monate im Jahr.", "exampleEn": "Twelve months in a year.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-14", "german": "dreizehn", "english": "thirteen", "gender": null, "example": "Sie ist dreizehn Jahre alt.", "exampleEn": "She is thirteen years old.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-15", "german": "zwanzig", "english": "twenty", "gender": null, "example": "Zwanzig Minuten Fahrt.", "exampleEn": "Twenty minutes of travel.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-16", "german": "dreißig", "english": "thirty", "gender": null, "example": "Er ist dreißig.", "exampleEn": "He is thirty.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-17", "german": "vierzig", "english": "forty", "gender": null, "example": "Vierzig Euro, bitte.", "exampleEn": "Forty euros, please.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-18", "german": "fünfzig", "english": "fifty", "gender": null, "example": "Fünfzig Prozent Rabatt.", "exampleEn": "Fifty percent discount.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-19", "german": "hundert", "english": "hundred", "gender": null, "example": "Hundert Meter weiter.", "exampleEn": "One hundred meters further.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-20", "german": "tausend", "english": "thousand", "gender": null, "example": "Tausend Dank!", "exampleEn": "Thanks a thousand!", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-21", "german": "erste", "english": "first", "gender": null, "example": "Die erste Straße links.", "exampleEn": "The first street on the left.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-22", "german": "zweite", "english": "second", "gender": null, "example": "Im zweiten Stock.", "exampleEn": "On the second floor.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-23", "german": "die Hälfte", "english": "half", "gender": "feminine", "example": "Nur die Hälfte.", "exampleEn": "Only half.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-24", "german": "doppelt", "english": "double", "gender": null, "example": "Doppelt so teuer.", "exampleEn": "Twice as expensive.", "level": "A1", "topic": "numbers"},
+    {"id": "a1-nu-25", "german": "mal", "english": "times (math)", "gender": null, "example": "Zwei mal drei ist sechs.", "exampleEn": "Two times three is six.", "level": "A1", "topic": "numbers"}
+  ]
+}

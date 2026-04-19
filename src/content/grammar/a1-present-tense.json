@@ -1,0 +1,65 @@
+{
+  "id": "a1-present-tense",
+  "title": "Present tense (regular verbs)",
+  "level": "A1",
+  "summary": "Regular verbs add endings to the stem: -e, -st, -t, -en, -t, -en.",
+  "sections": [
+    {
+      "heading": "Conjugation of lernen",
+      "body": [
+        "Remove -en to get the stem lern-, then add endings.",
+        "ich lerne, du lernst, er/sie/es lernt, wir lernen, ihr lernt, sie lernen."
+      ],
+      "examples": [
+        { "de": "Ich lerne jeden Tag.", "en": "I learn every day." },
+        { "de": "Du spielst Fußball.", "en": "You play football." }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "a1-pt-1",
+      "type": "fillBlank",
+      "prompt": "Du ___ Deutsch. (lernen)",
+      "answer": "lernst",
+      "explanation": "du + -st"
+    },
+    {
+      "id": "a1-pt-2",
+      "type": "multipleChoice",
+      "question": "Which form is correct for \"sie\" (she) with \"wohnen\"?",
+      "options": ["wohne", "wohnst", "wohnt", "wohnen"],
+      "correctIndex": 2,
+      "explanation": "er/sie/es + -t"
+    },
+    {
+      "id": "a1-pt-3",
+      "type": "fillBlank",
+      "prompt": "Wir ___ in München. (wohnen)",
+      "answer": "wohnen",
+      "explanation": "wir + -en"
+    },
+    {
+      "id": "a1-pt-4",
+      "type": "fillBlank",
+      "prompt": "Ihr ___ gut. (spielen)",
+      "answer": "spielt",
+      "explanation": "ihr + -t"
+    },
+    {
+      "id": "a1-pt-5",
+      "type": "wordOrder",
+      "words": ["ich", "Kaffee", "trinke"],
+      "correctOrder": ["ich", "trinke", "Kaffee"],
+      "explanation": "SVO: Ich trinke Kaffee."
+    },
+    {
+      "id": "a1-pt-6",
+      "type": "multipleChoice",
+      "question": "ich + machen =",
+      "options": ["machst", "mach", "mache", "macht"],
+      "correctIndex": 2,
+      "explanation": "ich + -e"
+    }
+  ]
+}

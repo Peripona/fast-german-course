@@ -1,0 +1,72 @@
+{
+  "id": "a1-negation",
+  "title": "Negation: nicht and kein",
+  "level": "A1",
+  "summary": "Use nicht to negate verbs/adjectives; use kein to negate nouns with indefinite meaning.",
+  "sections": [
+    {
+      "heading": "nicht",
+      "body": [
+        "Typically placed before what is negated: Ich mag das nicht.",
+        "With verbs, often at end: Ich komme heute nicht."
+      ],
+      "examples": [
+        { "de": "Das ist nicht richtig.", "en": "That is not correct." },
+        { "de": "Ich verstehe nicht.", "en": "I don't understand." }
+      ]
+    },
+    {
+      "heading": "kein",
+      "body": [
+        "Replaces ein/eine: Ich habe kein Auto.",
+        "Declines like ein: keine Freunde (plural)."
+      ],
+      "examples": [
+        { "de": "Ich habe Zeit. → Ich habe keine Zeit.", "en": "I have no time." }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "a1-neg-1",
+      "type": "fillBlank",
+      "prompt": "Ich spreche ___ Deutsch.", "answer": "kein",
+      "explanation": "Negating a noun with indefinite article → kein"
+    },
+    {
+      "id": "a1-neg-2",
+      "type": "multipleChoice",
+      "question": "Which negates \"Ich bin müde\" naturally?",
+      "options": ["Ich bin nicht müde.", "Ich nicht bin müde.", "Ich bin müde nicht.", "Ich kein bin müde."],
+      "correctIndex": 0,
+      "explanation": "nicht before the adjective or at end."
+    },
+    {
+      "id": "a1-neg-3",
+      "type": "fillBlank",
+      "prompt": "Das stimmt ___.", "answer": "nicht",
+      "explanation": "nicht negates the whole statement."
+    },
+    {
+      "id": "a1-neg-4",
+      "type": "fillBlank",
+      "prompt": "Ich habe ___ Lust.", "answer": "keine",
+      "explanation": "feminine noun: keine Lust"
+    },
+    {
+      "id": "a1-neg-5",
+      "type": "wordOrder",
+      "words": ["nicht", "Heute", "komme", "ich"],
+      "correctOrder": ["Heute", "komme", "ich", "nicht"],
+      "explanation": "Time first, then V2, then subject, nicht often at end."
+    },
+    {
+      "id": "a1-neg-6",
+      "type": "multipleChoice",
+      "question": "Which means \"no milk\"?",
+      "options": ["nicht Milch", "kein Milch", "keine Milch", "nicht die Milch"],
+      "correctIndex": 2,
+      "explanation": "Milch is feminine: keine Milch."
+    }
+  ]
+}

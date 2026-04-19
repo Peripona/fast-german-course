@@ -1,0 +1,33 @@
+{
+  "id": "a1-daily-routines",
+  "title": "Daily routines",
+  "level": "A1",
+  "topic": "daily",
+  "cards": [
+    {"id": "a1-dr-01", "german": "aufstehen", "english": "to get up", "gender": null, "example": "Ich stehe um sieben auf.", "exampleEn": "I get up at seven.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-02", "german": "frühstücken", "english": "to have breakfast", "gender": null, "example": "Wir frühstücken zusammen.", "exampleEn": "We have breakfast together.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-03", "german": "arbeiten", "english": "to work", "gender": null, "example": "Sie arbeitet im Büro.", "exampleEn": "She works in an office.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-04", "german": "lernen", "english": "to learn / study", "gender": null, "example": "Ich lerne Deutsch.", "exampleEn": "I learn German.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-05", "german": "kochen", "english": "to cook", "gender": null, "example": "Er kocht gern.", "exampleEn": "He likes to cook.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-06", "german": "schlafen", "english": "to sleep", "gender": null, "example": "Die Kinder schlafen früh.", "exampleEn": "The children sleep early.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-07", "german": "einkaufen", "english": "to shop", "gender": null, "example": "Samstags einkaufen gehen.", "exampleEn": "Go shopping on Saturdays.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-08", "german": "spazieren gehen", "english": "to go for a walk", "gender": null, "example": "Wir gehen im Park spazieren.", "exampleEn": "We walk in the park.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-09", "german": "fernsehen", "english": "to watch TV", "gender": null, "example": "Abends fernsehen.", "exampleEn": "Watch TV in the evening.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-10", "german": "das Frühstück", "english": "the breakfast", "gender": "neuter", "example": "Ein gutes Frühstück.", "exampleEn": "A good breakfast.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-11", "german": "das Mittagessen", "english": "the lunch", "gender": "neuter", "example": "Mittagessen um zwölf.", "exampleEn": "Lunch at twelve.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-12", "german": "das Abendessen", "english": "the dinner", "gender": "neuter", "example": "Abendessen um acht.", "exampleEn": "Dinner at eight.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-13", "german": "morgens", "english": "in the morning", "gender": null, "example": "Morgens früh aufstehen.", "exampleEn": "Get up early in the morning.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-14", "german": "mittags", "english": "at noon", "gender": null, "example": "Mittags eine Pause.", "exampleEn": "A break at noon.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-15", "german": "abends", "english": "in the evening", "gender": null, "example": "Abends zu Hause.", "exampleEn": "At home in the evening.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-16", "german": "nachts", "english": "at night", "gender": null, "example": "Nachts ruhig.", "exampleEn": "Quiet at night.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-17", "german": "manchmal", "english": "sometimes", "gender": null, "example": "Manchmal schwimmen wir.", "exampleEn": "Sometimes we swim.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-18", "german": "immer", "english": "always", "gender": null, "example": "Immer pünktlich.", "exampleEn": "Always on time.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-19", "german": "nie", "english": "never", "gender": null, "example": "Nie zu spät.", "exampleEn": "Never too late.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-20", "german": "oft", "english": "often", "gender": null, "example": "Oft im Fitnessstudio.", "exampleEn": "Often at the gym.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-21", "german": "die Woche", "english": "the week", "gender": "feminine", "example": "Diese Woche bin ich beschäftigt.", "exampleEn": "I'm busy this week.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-22", "german": "das Wochenende", "english": "the weekend", "gender": "neuter", "example": "Schönes Wochenende!", "exampleEn": "Have a nice weekend!", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-23", "german": "pünktlich", "english": "on time", "gender": null, "example": "Bitte pünktlich sein.", "exampleEn": "Please be on time.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-24", "german": "müde", "english": "tired", "gender": null, "example": "Ich bin sehr müde.", "exampleEn": "I am very tired.", "level": "A1", "topic": "daily"},
+    {"id": "a1-dr-25", "german": "sich duschen", "english": "to shower", "gender": null, "example": "Ich dusche jeden Morgen.", "exampleEn": "I shower every morning.", "level": "A1", "topic": "daily"}
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "a1-personal-pronouns",
+  "title": "Personal pronouns",
+  "level": "A1",
+  "summary": "German personal pronouns replace nouns and change with person and number.",
+  "sections": [
+    {
+      "heading": "Nominative pronouns",
+      "body": [
+        "ich (I), du (you informal), er/sie/es (he/she/it), wir (we), ihr (you plural informal), sie/Sie (they/you formal)."
+      ],
+      "examples": [
+        { "de": "Ich bin Student.", "en": "I am a student." },
+        { "de": "Sie ist Lehrerin.", "en": "She is a teacher." },
+        { "de": "Wir lernen Deutsch.", "en": "We learn German." }
+      ],
+      "table": {
+        "headers": ["Person", "Pronoun"],
+        "rows": [
+          { "cells": ["1st sg.", "ich"] },
+          { "cells": ["2nd sg. informal", "du"] },
+          { "cells": ["3rd sg. m.", "er"] },
+          { "cells": ["3rd sg. f.", "sie"] },
+          { "cells": ["3rd sg. n.", "es"] },
+          { "cells": ["1st pl.", "wir"] }
+        ]
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "a1-pr-1",
+      "type": "fillBlank",
+      "prompt": "___ heiße Anna.", "answer": "Ich",
+      "explanation": "First person singular."
+    },
+    {
+      "id": "a1-pr-2",
+      "type": "multipleChoice",
+      "question": "Which pronoun replaces \"der Mann\" (subject)?",
+      "options": ["sie", "er", "es", "ihn"],
+      "correctIndex": 1,
+      "explanation": "Masculine singular subject → er."
+    },
+    {
+      "id": "a1-pr-3",
+      "type": "fillBlank",
+      "prompt": "___ sind aus Berlin.", "answer": "Wir",
+      "explanation": "We are from Berlin."
+    },
+    {
+      "id": "a1-pr-4",
+      "type": "multipleChoice",
+      "question": "Formal \"you\" (singular) is:",
+      "options": ["du", "ihr", "Sie", "sie"],
+      "correctIndex": 2,
+      "explanation": "Capital Sie is formal you."
+    },
+    {
+      "id": "a1-pr-5",
+      "type": "wordOrder",
+      "words": ["lernen", "Deutsch", "Wir"],
+      "correctOrder": ["Wir", "lernen", "Deutsch"],
+      "explanation": "SVO in main clauses."
+    }
+  ]
+}

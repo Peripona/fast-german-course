@@ -1,0 +1,75 @@
+{
+  "id": "a1-articles",
+  "title": "Definite articles (der, die, das)",
+  "level": "A1",
+  "summary": "German nouns have grammatical gender. The definite article changes with gender and case.",
+  "sections": [
+    {
+      "heading": "Nominative singular",
+      "body": [
+        "Masculine nouns use der, feminine nouns use die, neuter nouns use das in the nominative case (subject of the sentence).",
+        "Examples: der Mann, die Frau, das Kind."
+      ],
+      "examples": [
+        { "de": "Der Hund ist braun.", "en": "The dog is brown." },
+        { "de": "Die Katze schläft.", "en": "The cat sleeps." },
+        { "de": "Das Auto ist neu.", "en": "The car is new." }
+      ],
+      "table": {
+        "headers": ["Gender", "Article", "Example"],
+        "rows": [
+          { "cells": ["Masculine", "der", "der Tisch"] },
+          { "cells": ["Feminine", "die", "die Tür"] },
+          { "cells": ["Neuter", "das", "das Buch"] }
+        ]
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "a1-art-1",
+      "type": "fillBlank",
+      "prompt": "___ Sonne scheint. (die Sonne)",
+      "answer": "Die",
+      "alternatives": ["die"],
+      "explanation": "Sonne is feminine; capitalize the first word in a sentence."
+    },
+    {
+      "id": "a1-art-2",
+      "type": "multipleChoice",
+      "question": "Which article is correct for \"Haus\" (house)?",
+      "options": ["der", "die", "das", "den"],
+      "correctIndex": 2,
+      "explanation": "Haus is neuter: das Haus."
+    },
+    {
+      "id": "a1-art-3",
+      "type": "fillBlank",
+      "prompt": "___ Mann liest. (der Mann)",
+      "answer": "Der",
+      "explanation": "Mann is masculine."
+    },
+    {
+      "id": "a1-art-4",
+      "type": "multipleChoice",
+      "question": "Which article matches \"Zeitung\" (newspaper)?",
+      "options": ["der", "die", "das", "dem"],
+      "correctIndex": 1,
+      "explanation": "Zeitung is feminine: die Zeitung."
+    },
+    {
+      "id": "a1-art-5",
+      "type": "wordOrder",
+      "words": ["ist", "Der", "groß", "Tisch"],
+      "correctOrder": ["Der", "Tisch", "ist", "groß"],
+      "explanation": "Subject-verb-object/adjective order in simple statements."
+    },
+    {
+      "id": "a1-art-6",
+      "type": "fillBlank",
+      "prompt": "___ Buch liegt auf dem Tisch.",
+      "answer": "Das",
+      "explanation": "Buch is neuter."
+    }
+  ]
+}

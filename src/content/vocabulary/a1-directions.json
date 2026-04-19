@@ -1,0 +1,33 @@
+{
+  "id": "a1-directions",
+  "title": "Directions & places",
+  "level": "A1",
+  "topic": "directions",
+  "cards": [
+    {"id": "a1-di-01", "german": "links", "english": "left", "gender": null, "example": "Biegen Sie links ab.", "exampleEn": "Turn left.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-02", "german": "rechts", "english": "right", "gender": null, "example": "Die Bank ist rechts.", "exampleEn": "The bank is on the right.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-03", "german": "geradeaus", "english": "straight ahead", "gender": null, "example": "Immer geradeaus.", "exampleEn": "Always straight ahead.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-04", "german": "hier", "english": "here", "gender": null, "example": "Wir sind hier.", "exampleEn": "We are here.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-05", "german": "dort", "english": "there", "gender": null, "example": "Das Hotel ist dort.", "exampleEn": "The hotel is there.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-06", "german": "nord", "english": "north", "gender": null, "example": "Richtung Norden.", "exampleEn": "Towards the north.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-07", "german": "süd", "english": "south", "gender": null, "example": "Nach Süden fahren.", "exampleEn": "Drive south.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-08", "german": "die Straße", "english": "the street", "gender": "feminine", "example": "Diese Straße entlang.", "exampleEn": "Along this street.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-09", "german": "die Ecke", "english": "the corner", "gender": "feminine", "example": "An der nächsten Ecke.", "exampleEn": "At the next corner.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-10", "german": "die Kreuzung", "english": "the intersection", "gender": "feminine", "example": "An der Kreuzung halten.", "exampleEn": "Stop at the intersection.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-11", "german": "nah", "english": "near", "gender": null, "example": "Ganz nah beim Bahnhof.", "exampleEn": "Very near the station.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-12", "german": "weit", "english": "far", "gender": null, "example": "Zu weit zu Fuß.", "exampleEn": "Too far on foot.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-13", "german": "Wo ist ...?", "english": "Where is ...?", "gender": null, "example": "Wo ist die Toilette?", "exampleEn": "Where is the toilet?", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-14", "german": "Wie komme ich zu ...?", "english": "How do I get to ...?", "gender": null, "example": "Wie komme ich zum Museum?", "exampleEn": "How do I get to the museum?", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-15", "german": "der Bahnhof", "english": "the train station", "gender": "masculine", "example": "Am Hauptbahnhof.", "exampleEn": "At the main station.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-16", "german": "der Flughafen", "english": "the airport", "gender": "masculine", "example": "Vom Flughafen in die Stadt.", "exampleEn": "From the airport to the city.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-17", "german": "die Haltestelle", "english": "the stop (bus/tram)", "gender": "feminine", "example": "Nächste Haltestelle.", "exampleEn": "Next stop.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-18", "german": "die Karte", "english": "the map", "gender": "feminine", "example": "Haben Sie eine Karte?", "exampleEn": "Do you have a map?", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-19", "german": "in der Nähe", "english": "nearby", "gender": null, "example": "Ein Café in der Nähe.", "exampleEn": "A café nearby.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-20", "german": "gegenüber", "english": "opposite", "gender": null, "example": "Gegenüber vom Park.", "exampleEn": "Opposite the park.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-21", "german": "zwischen", "english": "between", "gender": null, "example": "Zwischen zwei Häusern.", "exampleEn": "Between two houses.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-22", "german": "neben", "english": "next to", "gender": null, "example": "Neben der Bank.", "exampleEn": "Next to the bank.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-23", "german": "vor", "english": "in front of / before", "gender": null, "example": "Vor dem Hotel.", "exampleEn": "In front of the hotel.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-24", "german": "hinter", "english": "behind", "gender": null, "example": "Hinter dem Haus.", "exampleEn": "Behind the house.", "level": "A1", "topic": "directions"},
+    {"id": "a1-di-25", "german": "oben", "english": "upstairs / above", "gender": null, "example": "Das Büro ist oben.", "exampleEn": "The office is upstairs.", "level": "A1", "topic": "directions"}
+  ]
+}

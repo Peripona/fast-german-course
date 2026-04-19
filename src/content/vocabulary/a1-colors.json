@@ -1,0 +1,33 @@
+{
+  "id": "a1-colors",
+  "title": "Colors",
+  "level": "A1",
+  "topic": "colors",
+  "cards": [
+    {"id": "a1-co-01", "german": "rot", "english": "red", "gender": null, "example": "Das Auto ist rot.", "exampleEn": "The car is red.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-02", "german": "blau", "english": "blue", "gender": null, "example": "Der Himmel ist blau.", "exampleEn": "The sky is blue.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-03", "german": "grün", "english": "green", "gender": null, "example": "Das Gras ist grün.", "exampleEn": "The grass is green.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-04", "german": "gelb", "english": "yellow", "gender": null, "example": "Die Sonne ist gelb.", "exampleEn": "The sun is yellow.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-05", "german": "schwarz", "english": "black", "gender": null, "example": "Schwarze Schuhe.", "exampleEn": "Black shoes.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-06", "german": "weiß", "english": "white", "gender": null, "example": "Ein weißes Hemd.", "exampleEn": "A white shirt.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-07", "german": "grau", "english": "gray", "gender": null, "example": "Grauer Pullover.", "exampleEn": "Gray sweater.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-08", "german": "braun", "english": "brown", "gender": null, "example": "Braune Augen.", "exampleEn": "Brown eyes.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-09", "german": "orange", "english": "orange", "gender": null, "example": "Orange Früchte.", "exampleEn": "Orange fruits.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-10", "german": "lila", "english": "purple", "gender": null, "example": "Lila Blumen.", "exampleEn": "Purple flowers.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-11", "german": "rosa", "english": "pink", "gender": null, "example": "Rosa Tasche.", "exampleEn": "Pink bag.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-12", "german": "hell", "english": "light (color)", "gender": null, "example": "Helles Blau.", "exampleEn": "Light blue.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-13", "german": "dunkel", "english": "dark", "gender": null, "example": "Dunkelgrün.", "exampleEn": "Dark green.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-14", "german": "bunt", "english": "colorful", "gender": null, "example": "Ein buntes Bild.", "exampleEn": "A colorful picture.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-15", "german": "die Farbe", "english": "the color", "gender": "feminine", "example": "Welche Farbe magst du?", "exampleEn": "Which color do you like?", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-16", "german": "gold", "english": "gold", "gender": null, "example": "Goldene Uhr.", "exampleEn": "Gold watch.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-17", "german": "silber", "english": "silver", "gender": null, "example": "Silberner Ring.", "exampleEn": "Silver ring.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-18", "german": "beige", "english": "beige", "gender": null, "example": "Beige Hose.", "exampleEn": "Beige pants.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-19", "german": "türkis", "english": "turquoise", "gender": null, "example": "Türkises Meer.", "exampleEn": "Turquoise sea.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-20", "german": "farbig", "english": "colored", "gender": null, "example": "Farbiges Papier.", "exampleEn": "Colored paper.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-21", "german": "hautfarben", "english": "skin-colored", "gender": null, "example": "Hautfarbene Strümpfe.", "exampleEn": "Skin-colored stockings.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-22", "german": "nur", "english": "only", "gender": null, "example": "Nur schwarz oder weiß.", "exampleEn": "Only black or white.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-23", "german": "hellblau", "english": "light blue", "gender": null, "example": "Hellblauer Himmel.", "exampleEn": "Light blue sky.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-24", "german": "dunkelrot", "english": "dark red", "gender": null, "example": "Dunkelroter Wein.", "exampleEn": "Dark red wine.", "level": "A1", "topic": "colors"},
+    {"id": "a1-co-25", "german": "bunt gemischt", "english": "mixed colors", "gender": null, "example": "Alles bunt gemischt.", "exampleEn": "All mixed colors.", "level": "A1", "topic": "colors"}
+  ]
+}

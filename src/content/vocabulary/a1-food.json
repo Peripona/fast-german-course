@@ -1,0 +1,33 @@
+{
+  "id": "a1-food",
+  "title": "Food & drink",
+  "level": "A1",
+  "topic": "food",
+  "cards": [
+    {"id": "a1-fo-01", "german": "das Brot", "english": "the bread", "gender": "neuter", "example": "Frisches Brot vom Bäcker.", "exampleEn": "Fresh bread from the baker.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-02", "german": "der Käse", "english": "the cheese", "gender": "masculine", "example": "Käse zum Frühstück.", "exampleEn": "Cheese for breakfast.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-03", "german": "die Milch", "english": "the milk", "gender": "feminine", "example": "Kalte Milch im Kühlschrank.", "exampleEn": "Cold milk in the fridge.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-04", "german": "das Wasser", "english": "the water", "gender": "neuter", "example": "Ein Glas Wasser, bitte.", "exampleEn": "A glass of water, please.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-05", "german": "der Kaffee", "english": "the coffee", "gender": "masculine", "example": "Schwarzer Kaffee.", "exampleEn": "Black coffee.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-06", "german": "der Tee", "english": "the tea", "gender": "masculine", "example": "Tee mit Zitrone.", "exampleEn": "Tea with lemon.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-07", "german": "der Apfel", "english": "the apple", "gender": "masculine", "example": "Ich esse einen Apfel.", "exampleEn": "I eat an apple.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-08", "german": "die Banane", "english": "the banana", "gender": "feminine", "example": "Reife Bananen.", "exampleEn": "Ripe bananas.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-09", "german": "das Fleisch", "english": "the meat", "gender": "neuter", "example": "Kein Fleisch, ich bin Vegetarier.", "exampleEn": "No meat, I'm vegetarian.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-10", "german": "der Fisch", "english": "the fish", "gender": "masculine", "example": "Gegrillter Fisch.", "exampleEn": "Grilled fish.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-11", "german": "die Kartoffel", "english": "the potato", "gender": "feminine", "example": "Salzkartoffeln.", "exampleEn": "Boiled potatoes.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-12", "german": "die Tomate", "english": "the tomato", "gender": "feminine", "example": "Frische Tomaten.", "exampleEn": "Fresh tomatoes.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-13", "german": "der Salat", "english": "the salad / lettuce", "gender": "masculine", "example": "Grüner Salat.", "exampleEn": "Green salad.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-14", "german": "das Ei", "english": "the egg", "gender": "neuter", "example": "Zwei Eier zum Frühstück.", "exampleEn": "Two eggs for breakfast.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-15", "german": "die Suppe", "english": "the soup", "gender": "feminine", "example": "Heiße Tomatensuppe.", "exampleEn": "Hot tomato soup.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-16", "german": "der Reis", "english": "the rice", "gender": "masculine", "example": "Reis mit Gemüse.", "exampleEn": "Rice with vegetables.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-17", "german": "die Nudeln", "english": "the pasta", "gender": "plural", "example": "Nudeln mit Soße.", "exampleEn": "Pasta with sauce.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-18", "german": "süß", "english": "sweet", "gender": null, "example": "Zu süß für mich.", "exampleEn": "Too sweet for me.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-19", "german": "salzig", "english": "salty", "gender": null, "example": "Das ist sehr salzig.", "exampleEn": "That is very salty.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-20", "german": "sauer", "english": "sour", "gender": null, "example": "Zitronen sind sauer.", "exampleEn": "Lemons are sour.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-21", "german": "der Zucker", "english": "the sugar", "gender": "masculine", "example": "Ohne Zucker, bitte.", "exampleEn": "Without sugar, please.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-22", "german": "das Salz", "english": "the salt", "gender": "neuter", "example": "Etwas Salz dazu.", "exampleEn": "Some salt with it.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-23", "german": "der Saft", "english": "the juice", "gender": "masculine", "example": "Orangensaft.", "exampleEn": "Orange juice.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-24", "german": "das Bier", "english": "the beer", "gender": "neuter", "example": "Ein Bier, bitte.", "exampleEn": "A beer, please.", "level": "A1", "topic": "food"},
+    {"id": "a1-fo-25", "german": "der Wein", "english": "the wine", "gender": "masculine", "example": "Rotwein zum Essen.", "exampleEn": "Red wine with dinner.", "level": "A1", "topic": "food"}
+  ]
+}
