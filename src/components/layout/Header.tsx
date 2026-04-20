@@ -3,6 +3,7 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAppStore } from "@/lib/store";
@@ -33,9 +34,9 @@ export function Header() {
 
   return (
     <header className="flex h-14 items-center justify-between border-b border-border px-4 md:px-6">
-      <div className="font-semibold md:hidden">
+      <Link href="/" className="font-semibold md:hidden">
         <span className="text-destructive">Deutsch</span> Tutor
-      </div>
+      </Link>
       <div className="ml-auto flex items-center gap-2">
         <Badge variant="secondary" className="font-mono text-xs">
           {level}
